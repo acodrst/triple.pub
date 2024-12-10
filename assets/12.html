@@ -1,0 +1,420 @@
+
+            <h2 id="section-29">🌊 Streams</h2>
+      <p>
+        Much communication is done with streams. Sensor and vision data
+        on an autonomous vehicle, human speech, and log entries are all
+        streams. Metrics usually come in stream form, either in
+        real-time or historical time-series data. Specific to system
+        analysis, any change to the model needs to be communicated
+        quickly via streams to facilitate collaboration. Triples can
+        easily be embedded into streams, and have more inherent power
+        than metrics in a time-series.</p>
+      <p>The system should leverage existing event streams for
+        insight. Replay of system changes should be able to be mapped
+        both by timestamp and with queries against multiple streams and
+        datasets.</p>
+      <p>Streams in IT are often key-value pairs with timestamps.
+        These streams are the relative of triples, with key-value being
+        two to a triple’s three.</p>
+      <p>Consider this local alarm log entry:</p>
+      <p>&lt;154&gt;1 20220327T211058.426Z dc1mon.example.com
+        process=“6 6 3” cpu=“100” memfMB=“10”</p>
+      <p>This is in Syslog format <span class="citation" data-cites="gerhards_syslog_2009">(<a
+            href="#ref-gerhards_syslog_2009" role="doc-biblioref">Gerhards
+            2009</a>)</span>. It illustrates a priority alarm coming through
+        for the available CPU dedicated to process 6.6.3 running at 100
+        percent, with only 10 MB of free memory. This is an operational
+        stream that could trigger integration with the graph
+        visualization. <a href="#section-10">(👁️)</a> For instance,
+        process 3, the Ad Targeting Engine in Fig. 14 could be
+        highlighted with red when the alarm came through, as shown in
+        Fig. 16.</p>
+      <div class="centerpage">
+        <figure>
+          <svg width="692pt" height="360pt" viewBox="0.00 0.00 692.48 360.00" version="1.1" id="sc1125a65__svg402"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs id="sc1125a65__defs406" />
+            <g id="sc1125a65__graph0" class="sc1125a65__graph"
+              transform="scale(0.477325 0.477325) rotate(0) translate(4 750.2)">
+              <g id="sc1125a65__node1" class="sc1125a65__node">
+                <title id="sc1125a65__title2">⚗️🔸1</title><text text-anchor="start" x="933.83" y="-422.01"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text4">⚗️</text><text text-anchor="start"
+                  x="1025.83" y="-447.41" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text6">[1]</text><text text-anchor="start" x="1038.33" y="-441.01" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text8" /><text text-anchor="start" x="999.83" y="-427.41"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text10">Fanisizer</text><text
+                  text-anchor="start" x="1014.33" y="-411.41" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text12">Cloud</text><text text-anchor="start" x="1084.83" y="-429.51"
+                  font-weight="bold" font-size="14.00" id="sc1125a65__text14">      </text>
+                <polygon fill="none" stroke="#ee3377" stroke-width="4"
+                  points="923.33,-399.21 923.33,-467.21 1122.33,-467.21 1122.33,-399.21 923.33,-399.21"
+                  id="sc1125a65__polygon16" />
+              </g>
+              <g id="sc1125a65__node2" class="sc1125a65__node">
+                <title id="sc1125a65__title19">💽🔸1</title><text text-anchor="start" x="1246.74" y="-552.85"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text21">💽</text><text text-anchor="start"
+                  x="1334.74" y="-586.25" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text23">[D1]</text><text text-anchor="start" x="1353.74" y="-579.85" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text25" /><text text-anchor="start" x="1328.74" y="-566.25"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text27">Super</text><text
+                  text-anchor="start" x="1329.74" y="-550.25" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text29">Cloud</text><text text-anchor="start" x="1312.74" y="-534.25"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text31">Database</text><text
+                  text-anchor="start" x="1402.74" y="-560.35" font-weight="bold" font-size="14.00"
+                  id="sc1125a65__text33">      </text>
+                <polygon fill="none" stroke="#ee7733" stroke-width="4"
+                  points="1236.74,-524.05 1236.74,-604.05 1440.74,-604.05 1440.74,-524.05 1236.74,-524.05"
+                  id="sc1125a65__polygon35" />
+              </g>
+              <g id="sc1125a65__edge1" class="sc1125a65__edge">
+                <title id="sc1125a65__title38">⚗️🔸1-&gt;💽🔸1</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M1119.36,-473.19C1153.66,-487.4 1192.54,-503.5 1227.93,-518.16" id="sc1125a65__path40" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="1120.57,-469.9 1109.99,-469.31 1117.89,-476.37 1120.57,-469.9" id="sc1125a65__polygon42" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="1226.75,-521.46 1237.33,-522.05 1229.43,-514.99 1226.75,-521.46" id="sc1125a65__polygon44" />
+              </g>
+              <g id="sc1125a65__node3" class="sc1125a65__node">
+                <title id="sc1125a65__title47">💽🔸2</title><text text-anchor="start" x="609.18" y="-252.11"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text49">💽</text><text text-anchor="start"
+                  x="690.18" y="-277.51" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text51">[D2]</text><text text-anchor="start" x="709.18" y="-271.11" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text53" /><text text-anchor="start" x="675.18" y="-257.51"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text55">Identity</text><text
+                  text-anchor="start" x="675.18" y="-241.51" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text57">Storage</text><text text-anchor="start" x="751.18" y="-259.61"
+                  font-weight="bold" font-size="14.00" id="sc1125a65__text59">      </text>
+                <polygon fill="none" stroke="#ee7733" stroke-width="4"
+                  points="599.18,-229.31 599.18,-297.31 789.18,-297.31 789.18,-229.31 599.18,-229.31"
+                  id="sc1125a65__polygon61" />
+              </g>
+              <g id="sc1125a65__edge2" class="sc1125a65__edge">
+                <title id="sc1125a65__title64">⚗️🔸1-&gt;💽🔸2</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M951.09,-392.07C917.6,-373.23 877.02,-350.93 839.94,-331.96 821.54,-322.54 801.61,-312.84 782.57,-303.81"
+                  id="sc1125a65__path66" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="949.47,-395.17 959.9,-397.04 952.9,-389.08 949.47,-395.17" id="sc1125a65__polygon68" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="783.85,-300.54 773.31,-299.43 780.86,-306.87 783.85,-300.54" id="sc1125a65__polygon70" />
+              </g>
+              <g id="sc1125a65__node4" class="sc1125a65__node">
+                <title id="sc1125a65__title73">👤🔸DigMkt</title><text text-anchor="start" x="1227.52" y="-257.82"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text75">👤</text><text text-anchor="start"
+                  x="1299.52" y="-283.22" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text77">[DigMkt]</text><text text-anchor="start" x="1338.02" y="-276.82"
+                  font-weight="bold" font-size="4.00" id="sc1125a65__text79" /><text text-anchor="start" x="1310.02"
+                  y="-263.22" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text81">Digital</text><text text-anchor="start" x="1293.52" y="-247.22"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text83">Marketing</text><text
+                  text-anchor="start" x="1390.52" y="-265.32" font-weight="bold" font-size="14.00"
+                  id="sc1125a65__text85">      </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="1217.02,-235.02 1217.02,-303.02 1428.02,-303.02 1428.02,-235.02 1217.02,-235.02"
+                  id="sc1125a65__polygon87" />
+              </g>
+              <g id="sc1125a65__edge3" class="sc1125a65__edge">
+                <title id="sc1125a65__title90">⚗️🔸1-&gt;👤🔸DigMkt</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M1097.55,-392.27C1143.36,-367.17 1201.82,-335.15 1247.66,-310.03" id="sc1125a65__path92" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="1095.69,-389.3 1088.6,-397.18 1099.05,-395.44 1095.69,-389.3" id="sc1125a65__polygon94" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="1249.56,-312.98 1256.65,-305.11 1246.2,-306.84 1249.56,-312.98" id="sc1125a65__polygon96" />
+              </g>
+              <g id="sc1125a65__node5" class="sc1125a65__node">
+                <title id="sc1125a65__title99">👤🔸SupC</title><text text-anchor="start" x="678.06" y="-674.77"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text101">👤</text><text text-anchor="start"
+                  x="755.56" y="-716.17" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text103">[SupC]</text><text text-anchor="start" x="785.06" y="-709.77"
+                  font-weight="bold" font-size="4.00" id="sc1125a65__text105" /><text text-anchor="start" x="760.06"
+                  y="-696.17" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text107">Super</text><text text-anchor="start" x="761.06" y="-680.17"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text109">Cloud</text><text
+                  text-anchor="start" x="744.06" y="-664.17" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text111">Database</text><text text-anchor="start" x="750.56" y="-648.17"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text113">Support</text><text
+                  text-anchor="start" x="834.06" y="-682.27" font-weight="bold" font-size="14.00"
+                  id="sc1125a65__text115">      </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="668.06,-637.97 668.06,-733.97 872.06,-733.97 872.06,-637.97 668.06,-637.97"
+                  id="sc1125a65__polygon117" />
+              </g>
+              <g id="sc1125a65__edge4" class="sc1125a65__edge">
+                <title id="sc1125a65__title120">⚗️🔸1-&gt;👤🔸SupC</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M979.46,-476.58C937.48,-518.56 873.57,-582.46 827.4,-628.63" id="sc1125a65__path122" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="982.02,-478.97 986.61,-469.42 977.07,-474.02 982.02,-478.97" id="sc1125a65__polygon124" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="824.75,-626.34 820.15,-635.88 829.7,-631.29 824.75,-626.34" id="sc1125a65__polygon126" />
+              </g>
+              <g id="sc1125a65__node6" class="sc1125a65__node">
+                <title id="sc1125a65__title129">💽🔸3</title><text text-anchor="start" x="656.74" y="-373.96"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text131">💽</text><text text-anchor="start"
+                  x="736.74" y="-415.36" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text133">[D3]</text><text text-anchor="start" x="755.74" y="-408.96" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text135" /><text text-anchor="start" x="736.24" y="-395.36"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text137">User</text><text
+                  text-anchor="start" x="722.74" y="-379.36" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text139">Activity</text><text text-anchor="start" x="742.24" y="-363.36"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text141">For</text><text
+                  text-anchor="start" x="737.74" y="-347.36" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text143">Sale</text><text text-anchor="start" x="796.74" y="-381.46" font-weight="bold"
+                  font-size="14.00" id="sc1125a65__text145">      </text>
+                <polygon fill="none" stroke="#ee7733" stroke-width="4"
+                  points="646.74,-337.16 646.74,-433.16 834.74,-433.16 834.74,-337.16 646.74,-337.16"
+                  id="sc1125a65__polygon147" />
+              </g>
+              <g id="sc1125a65__edge5" class="sc1125a65__edge">
+                <title id="sc1125a65__title150">⚗️🔸1-&gt;💽🔸3</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M910.93,-414.15C886.39,-409.97 860.63,-405.58 836.78,-401.52" id="sc1125a65__path152" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="910.54,-417.63 920.99,-415.86 911.72,-410.73 910.54,-417.63" id="sc1125a65__polygon154" />
+              </g>
+              <g id="sc1125a65__node7" class="sc1125a65__node">
+                <title id="sc1125a65__title157">⚗️🔸2</title><text text-anchor="start" x="258.93" y="-338.74"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text159">⚗️</text><text text-anchor="start"
+                  x="356.43" y="-356.14" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text161">[2]</text><text text-anchor="start" x="368.93" y="-349.74" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text163" /><text text-anchor="start" x="324.93" y="-336.14"
+                  font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text165">IdentiTroll</text><text text-anchor="start" x="420.93" y="-346.24"
+                  font-weight="bold" font-size="14.00" id="sc1125a65__text167">      </text>
+                <polygon fill="none" stroke="#ee3377" stroke-width="4"
+                  points="248.93,-315.94 248.93,-383.94 458.93,-383.94 458.93,-315.94 248.93,-315.94"
+                  id="sc1125a65__polygon169" />
+              </g>
+              <g id="sc1125a65__edge6" class="sc1125a65__edge">
+                <title id="sc1125a65__title172">⚗️🔸2-&gt;💽🔸2</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M470.91,-320.15C508.65,-310.55 550.27,-299.95 587.25,-290.53" id="sc1125a65__path174" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="469.95,-316.79 461.12,-322.65 471.67,-323.57 469.95,-316.79" id="sc1125a65__polygon176" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="588.22,-293.9 597.04,-288.04 586.49,-287.12 588.22,-293.9" id="sc1125a65__polygon178" />
+              </g>
+              <g id="sc1125a65__edge11" class="sc1125a65__edge">
+                <title id="sc1125a65__title181">⚗️🔸2-&gt;💽🔸3</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M471.39,-360.64C523.34,-365.37 583.98,-370.89 634.56,-375.49" id="sc1125a65__path183" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="471.44,-357.13 461.16,-359.7 470.81,-364.1 471.44,-357.13" id="sc1125a65__polygon185" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="634.26,-378.98 644.53,-376.4 634.89,-372.01 634.26,-378.98" id="sc1125a65__polygon187" />
+              </g>
+              <g id="sc1125a65__node8" class="sc1125a65__node">
+                <title id="sc1125a65__title190">👤🔸GMom</title><text text-anchor="start" x="76.35" y="-693"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text192">👤</text><text text-anchor="start"
+                  x="170.35" y="-726.4" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text194">[GMom]</text><text text-anchor="start" x="204.85" y="-720" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text196" /><text text-anchor="start" x="142.35" y="-706.4"
+                  font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text198">Grandmothers</text><text text-anchor="start" x="188.85" y="-690.4"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text200">and</text><text
+                  text-anchor="start" x="166.35" y="-674.4" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text202">PeePaws</text><text text-anchor="start" x="275.35" y="-700.5"
+                  font-weight="bold" font-size="14.00" id="sc1125a65__text204">      </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="65.85,-664.2 65.85,-744.2 312.85,-744.2 312.85,-664.2 65.85,-664.2"
+                  id="sc1125a65__polygon206" />
+              </g>
+              <g id="sc1125a65__edge7" class="sc1125a65__edge">
+                <title id="sc1125a65__title209">⚗️🔸2-&gt;👤🔸GMom</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M332.75,-395.52C302.09,-461.52 245.49,-583.37 213.33,-652.6" id="sc1125a65__path211" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="336.05,-396.73 337.09,-386.19 329.7,-393.78 336.05,-396.73" id="sc1125a65__polygon213" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="209.99,-651.46 208.96,-662 216.34,-654.41 209.99,-651.46" id="sc1125a65__polygon215" />
+              </g>
+              <g id="sc1125a65__node9" class="sc1125a65__node">
+                <title id="sc1125a65__title218">👤🔸Gov</title><text text-anchor="start" x="18.4" y="-398.42"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text220">👤</text><text text-anchor="start"
+                  x="114.4" y="-423.82" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text222">[Gov]</text><text text-anchor="start" x="137.9" y="-417.42" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text224" /><text text-anchor="start" x="84.4" y="-403.82"
+                  font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text226">Government</text><text text-anchor="start" x="103.9" y="-387.82"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text228">Leaders</text><text
+                  text-anchor="start" x="199.4" y="-405.92" font-weight="bold" font-size="14.00"
+                  id="sc1125a65__text230">      </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="7.9,-375.62 7.9,-443.62 236.9,-443.62 236.9,-375.62 7.9,-375.62" id="sc1125a65__polygon232" />
+              </g>
+              <g id="sc1125a65__edge8" class="sc1125a65__edge">
+                <title id="sc1125a65__title235">⚗️🔸2-&gt;👤🔸Gov</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M239.64,-379.4C239.56,-379.42 239.48,-379.44 239.41,-379.46" id="sc1125a65__path237" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="237.83,-383.48 246.64,-377.59 236.08,-376.7 237.83,-383.48" id="sc1125a65__polygon239" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="247.98,-373.63 239.17,-379.52 249.73,-380.41 247.98,-373.63" id="sc1125a65__polygon241" />
+              </g>
+              <g id="sc1125a65__node10" class="sc1125a65__node">
+                <title id="sc1125a65__title244">👤🔸Trolls</title><text text-anchor="start" x="48.73" y="-38.8"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text246">👤</text><text text-anchor="start"
+                  x="124.73" y="-80.2" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text248">[Trolls]</text><text text-anchor="start" x="155.23" y="-73.8"
+                  font-weight="bold" font-size="4.00" id="sc1125a65__text250" /><text text-anchor="start" x="137.23"
+                  y="-60.2" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text252">Troll</text><text text-anchor="start" x="129.23" y="-44.2" font-weight="bold"
+                  font-size="16.00" fill="currentColor" id="sc1125a65__text254">Farms</text><text text-anchor="start"
+                  x="114.73" y="-28.2" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text256">and Meat</text><text text-anchor="start" x="133.23" y="-12.2"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text258">Tools</text><text
+                  text-anchor="start" x="203.73" y="-46.3" font-weight="bold" font-size="14.00" id="sc1125a65__text260">
+                       </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="38.23,-2 38.23,-98 241.23,-98 241.23,-2 38.23,-2" id="sc1125a65__polygon262" />
+              </g>
+              <g id="sc1125a65__edge9" class="sc1125a65__edge">
+                <title id="sc1125a65__title265">⚗️🔸2-&gt;👤🔸Trolls</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M322.28,-305.62C284.91,-253.3 222.65,-166.11 181.39,-108.34" id="sc1125a65__path267" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="319.43,-307.66 328.09,-313.76 325.13,-303.59 319.43,-307.66" id="sc1125a65__polygon269" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="184.12,-106.14 175.46,-100.04 178.43,-110.21 184.12,-106.14" id="sc1125a65__polygon271" />
+              </g>
+              <g id="sc1125a65__node11" class="sc1125a65__node">
+                <title id="sc1125a65__title274">👤🔸FodMud</title><text text-anchor="start" x="12" y="-552.85"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text276">👤</text><text text-anchor="start" x="78"
+                  y="-586.25" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text278">[FodMud]</text><text text-anchor="start" x="120" y="-579.85"
+                  font-weight="bold" font-size="4.00" id="sc1125a65__text280" /><text text-anchor="start" x="90"
+                  y="-566.25" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text282">Fodder</text><text text-anchor="start" x="104" y="-550.25" font-weight="bold"
+                  font-size="16.00" fill="currentColor" id="sc1125a65__text284">and</text><text text-anchor="start"
+                  x="87" y="-534.25" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text286">Mudder</text><text text-anchor="start" x="170" y="-560.35" font-weight="bold"
+                  font-size="14.00" id="sc1125a65__text288">      </text>
+                <polygon fill="none" stroke="#33bbee" stroke-width="4"
+                  points="2,-524.05 2,-604.05 208,-604.05 208,-524.05 2,-524.05" id="sc1125a65__polygon290" />
+              </g>
+              <g id="sc1125a65__edge10" class="sc1125a65__edge">
+                <title id="sc1125a65__title293">⚗️🔸2-&gt;👤🔸FodMud</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M305.86,-392.91C286.2,-410.37 263.15,-430.67 242.1,-448.82 216.49,-470.89 187.91,-495 163.49,-515.44"
+                  id="sc1125a65__path295" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="308.36,-395.37 313.51,-386.11 303.71,-390.14 308.36,-395.37" id="sc1125a65__polygon297" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="161.14,-512.84 155.72,-521.94 165.63,-518.21 161.14,-512.84" id="sc1125a65__polygon299" />
+              </g>
+              <g id="sc1125a65__node12" class="sc1125a65__node">
+                <title id="sc1125a65__title302">⚗️🔸3</title><text text-anchor="start" x="470.83" y="-473.97"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text304">⚗️</text><text text-anchor="start"
+                  x="565.83" y="-507.37" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text306">[3]</text><text text-anchor="start" x="578.33" y="-500.97" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text308" /><text text-anchor="start" x="567.33" y="-487.37"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text310">Ad</text><text
+                  text-anchor="start" x="536.83" y="-471.37" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text312">Targeting</text><text text-anchor="start" x="548.83" y="-455.37"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text314">Engine</text><text
+                  text-anchor="start" x="627.83" y="-481.47" font-weight="bold" font-size="14.00"
+                  id="sc1125a65__text316">      </text>
+                <polygon fill="none" stroke="#ee3377" stroke-width="10"
+                  points="460.33,-445.17 460.33,-525.17 665.33,-525.17 665.33,-445.17 460.33,-445.17"
+                  id="sc1125a65__polygon318" />
+              </g>
+              <g id="sc1125a65__edge13" class="sc1125a65__edge">
+                <title id="sc1125a65__title321">⚗️🔸3-&gt;💽🔸2</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M586.29,-433.95C600.9,-403.56 620.81,-364.71 641.54,-331.96 646.67,-323.86 652.51,-315.53 658.39,-307.59"
+                  id="sc1125a65__path323" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="583.07,-432.56 581.93,-443.09 589.39,-435.57 583.07,-432.56" id="sc1125a65__polygon325" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="661.28,-309.58 664.51,-299.49 655.69,-305.36 661.28,-309.58" id="sc1125a65__polygon327" />
+              </g>
+              <g id="sc1125a65__edge14" class="sc1125a65__edge">
+                <title id="sc1125a65__title330">⚗️🔸3-&gt;💽🔸3</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M646.79,-437.97C646.89,-437.92 646.99,-437.86 647.08,-437.81" id="sc1125a65__path332" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="644.76,-435.1 637.76,-443.05 648.19,-441.2 644.76,-435.1" id="sc1125a65__polygon334" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="644.54,-443.25 651.54,-435.3 641.11,-437.15 644.54,-443.25" id="sc1125a65__polygon336" />
+              </g>
+              <g id="sc1125a65__node13" class="sc1125a65__node">
+                <title id="sc1125a65__title339">⚗️🔸4</title><text text-anchor="start" x="320.12" y="-606.99"
+                  font-weight="bold" font-size="44.00" id="sc1125a65__text341">⚗️</text><text text-anchor="start"
+                  x="405.62" y="-632.39" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text343">[4]</text><text text-anchor="start" x="418.12" y="-625.99" font-weight="bold"
+                  font-size="4.00" id="sc1125a65__text345" /><text text-anchor="start" x="392.12" y="-612.39"
+                  font-weight="bold" font-size="16.00" fill="currentColor" id="sc1125a65__text347">Media</text><text
+                  text-anchor="start" x="386.12" y="-596.39" font-weight="bold" font-size="16.00" fill="currentColor"
+                  id="sc1125a65__text349">Outlets</text><text text-anchor="start" x="458.12" y="-614.49"
+                  font-weight="bold" font-size="14.00" id="sc1125a65__text351">      </text>
+                <polygon fill="none" stroke="#ee3377" stroke-width="4"
+                  points="310.12,-584.19 310.12,-652.19 496.12,-652.19 496.12,-584.19 310.12,-584.19"
+                  id="sc1125a65__polygon353" />
+              </g>
+              <g id="sc1125a65__edge12" class="sc1125a65__edge">
+                <title id="sc1125a65__title356">⚗️🔸3-&gt;⚗️🔸4</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M504.5,-533.75C488.05,-547.45 470.29,-562.25 454.3,-575.57" id="sc1125a65__path358" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="506.85,-536.35 512.29,-527.26 502.37,-530.97 506.85,-536.35" id="sc1125a65__polygon360" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="452.05,-572.89 446.6,-581.98 456.53,-578.26 452.05,-572.89" id="sc1125a65__polygon362" />
+              </g>
+              <g id="sc1125a65__edge18" class="sc1125a65__edge">
+                <title id="sc1125a65__title365">⚗️🔸4-&gt;👤🔸SupC</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M508.63,-637.68C554.69,-646.19 608.81,-656.19 655.82,-664.87" id="sc1125a65__path367" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="509.04,-634.2 498.57,-635.82 507.77,-641.08 509.04,-634.2" id="sc1125a65__polygon369" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="655.27,-668.33 665.74,-666.7 656.54,-661.44 655.27,-668.33" id="sc1125a65__polygon371" />
+              </g>
+              <g id="sc1125a65__edge15" class="sc1125a65__edge">
+                <title id="sc1125a65__title374">⚗️🔸4-&gt;👤🔸GMom</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M304.05,-658.05C303.84,-658.14 303.63,-658.22 303.42,-658.31" id="sc1125a65__path376" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="305.42,-661.27 313.39,-654.29 302.81,-654.78 305.42,-661.27" id="sc1125a65__polygon378" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="302.01,-655.1 294.04,-662.08 304.62,-661.6 302.01,-655.1" id="sc1125a65__polygon380" />
+              </g>
+              <g id="sc1125a65__edge16" class="sc1125a65__edge">
+                <title id="sc1125a65__title383">⚗️🔸4-&gt;👤🔸Gov</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M346.48,-576.11C297.76,-539.91 227.83,-487.95 179.09,-451.74" id="sc1125a65__path385" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="344.43,-578.94 354.54,-582.1 348.6,-573.33 344.43,-578.94" id="sc1125a65__polygon387" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="180.97,-448.77 170.85,-445.62 176.79,-454.39 180.97,-448.77" id="sc1125a65__polygon389" />
+              </g>
+              <g id="sc1125a65__edge17" class="sc1125a65__edge">
+                <title id="sc1125a65__title392">⚗️🔸4-&gt;👤🔸FodMud</title>
+                <path fill="none" stroke="currentColor" stroke-width="3"
+                  d="M297.99,-599.1C272.82,-594.53 245.81,-589.62 220.21,-584.97" id="sc1125a65__path394" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="297.51,-602.57 307.97,-600.91 298.76,-595.68 297.51,-602.57" id="sc1125a65__polygon396" />
+                <polygon fill="currentColor" stroke="currentColor" stroke-width="3"
+                  points="220.56,-581.48 210.09,-583.14 219.3,-588.37 220.56,-581.48" id="sc1125a65__polygon398" />
+              </g>
+            </g>
+          </svg>
+          <figcaption>Node Alarm</figcaption>
+        </figure>
+      </div>
+      <p>Streaming techniques don’t have to be applied to just
+        operational events. We can put a triple update directly into an
+        event stream:</p>
+      <p>&lt;77&gt;1 20220327T211058.426Z allsys tech=“sally”
+        triple=“0🔸6🔸6🔸⚗️🔸3🔹🏷🔹Ad\nTargeting\nEngine\n2”</p>
+      <p>This change could be visualized in near real-time by updating
+        the graph visualization, showing that we are now calling process
+        6.6.3 “Ad Targeting Engine 2”. This facilitates collaboration,
+        as participants can see their input live, much like <a href="#section-1">(📌)</a>. <a
+          href="#section-25">(👥)</a> <a href="#section-13">(📛)</a> The model can be replayed over time,
+        based on the timestamp. For scaling, put the data into a
+        time-series or graph database.</p>
+
+
+

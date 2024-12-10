@@ -1,0 +1,157 @@
+      <h3 id="section-55">📚 Storage</h3>
+      <p>
+        The authoritative store is comprised of triples encoded as
+        UTF-8, with a newline character terminating each triple stored
+        on a file system. Subject, predicate, and object are delimited
+        by 🔹 (code point 1F539, small blue diamond). This document
+        assumes Unicode 15.0, and may be adjusted over time as prudent
+        and convenient. <span class="citation" data-cites="unicode_list_2022">(<a href="#ref-unicode_list_2022"
+            role="doc-biblioref">Unicode 2022a</a>)</span> <span class="citation" data-cites="pike_history_2003">(<a
+            href="#ref-pike_history_2003" role="doc-biblioref">Pike
+            2003</a>)</span> <span class="citation" data-cites="unicode_uts_2022">(<a href="#ref-unicode_uts_2022"
+            role="doc-biblioref">Unicode 2022c</a>)</span> Emoji in the
+        triples should use fully qualified emoji when available. <span class="citation"
+          data-cites="unicode_test_2022">(<a href="#ref-unicode_test_2022" role="doc-biblioref">Unicode
+            2022b</a>)</span> <a href="#section-40">(🧤)</a><a href="#section-20">(⚛️)</a></p>
+      <p><span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        has a soft limit of roughly 5MB of triples. I have created
+        implementations that compressed 3400 triples to 17MB as an edge
+        case. This includes build steps for the OS I’m writing this on
+        right now, including compiler output. <a href="#section-67">(🏗️)</a> <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        uses nesting, so the constraint on capacity is more about the
+        ability of the web browser to handle the size of the web page.
+        <a href="#section-36">(🪣)</a>
+      </p>
+      <p>Since the data itself is the knowledge of the system, this is
+        attainable. All you need is a copy of the data and something to
+        render it with. <a href="#section-35">(💯)</a></p>
+      <p>Consider these two triples:</p>
+      <p>0🔸6🔸11▪️⚗️🔸1🔹↔️🔹👤🔸CFO<br>
+        0🔸6🔸11▪️⚗️🔸2🔹↔️🔹👤🔸CFO</p>
+      <p>They both use an optional convention of using a 🔸 to delimit
+        a path. The path includes a level indicator, as well as an emoji
+        classifier at the end, and an instance integer. The node ID for
+        the first triple is 0🔸6🔸11▪️⚗️🔸1. Here is what UTF-8 looks
+        like directly on a file system using a binary editor <span class="citation"
+          data-cites="buergmann_buergmannbvi_2022">(<a href="#ref-buergmann_buergmannbvi_2022"
+            role="doc-biblioref">Buergmann 2022</a>)</span>:</p>
+      <div class="sourceCode" id="cb1">
+        <pre
+          class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1"></a>00000000  30 F0 9F 94 B8 36 F0 9F 94 B8 31 31 E2 96 AA EF 0....6....11....</span>
+<span id="cb1-2"><a href="#cb1-2"></a>00000010  B8 8F E2 9A 97 EF B8 8F F0 9F 94 B8 31 F0 9F 94 ............1...</span>
+<span id="cb1-3"><a href="#cb1-3"></a>00000020  B9 E2 86 94 EF B8 8F F0 9F 94 B9 F0 9F 91 A4 F0 ................</span>
+<span id="cb1-4"><a href="#cb1-4"></a>00000030  9F 94 B8 43 46 4F 0A 30 F0 9F 94 B8 36 F0 9F 94 ...CFO.0....6...</span>
+<span id="cb1-5"><a href="#cb1-5"></a>00000040  B8 31 31 E2 96 AA EF B8 8F E2 9A 97 EF B8 8F F0 .11.............</span>
+<span id="cb1-6"><a href="#cb1-6"></a>00000050  9F 94 B8 32 F0 9F 94 B9 E2 86 94 EF B8 8F F0 9F ...2............</span>
+<span id="cb1-7"><a href="#cb1-7"></a>00000060  94 B9 F0 9F 91 A4 F0 9F 94 B8 43 46 4F 0A       ..........CFO.</span></code></pre>
+      </div>
+      <p>This is JavaScript code that will convert lines of triples
+        into the matching UTF-8 encoding on the file system:</p>
+      <div class="sourceCode" id="cb2">
+        <pre
+          class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> lines<span class="op">=</span><span class="vs">`0🔸6🔸11▪️⚗️🔸1🔹↔️🔹👤🔸CFO</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="vs">0🔸6🔸11▪️⚗️🔸2🔹↔️🔹👤🔸CFO</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> textEncoder <span class="op">=</span> <span class="kw">new</span> <span class="fu">TextEncoder</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>uline<span class="op">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> j<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> u8<span class="op">=</span>textEncoder<span class="op">.</span><span class="fu">encode</span>(lines)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> u8){</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (j<span class="op">==</span><span class="dv">16</span>){</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    uline<span class="op">+=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    j<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  j<span class="op">++</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  uline<span class="op">+=</span>i<span class="op">.</span><span class="fu">toString</span>(<span class="dv">16</span>)<span class="op">.</span><span class="fu">padStart</span>(<span class="dv">2</span><span class="op">,</span> <span class="st">&#39;0&#39;</span>)<span class="op">+</span><span class="st">&#39; &#39;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(uline)</span></code></pre>
+      </div>
+      <p>Run inside a web page with a script tag, or with node:</p>
+      <div class="sourceCode" id="cb3">
+        <pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a>$ node triples_to_UTF-8.js</span>
+<span id="cb3-2"><a href="#cb3-2"></a>30 f0 9f 94 b8 36 f0 9f 94 b8 31 31 e2 96 aa ef </span>
+<span id="cb3-3"><a href="#cb3-3"></a>b8 8f e2 9a 97 ef b8 8f f0 9f 94 b8 31 f0 9f 94 </span>
+<span id="cb3-4"><a href="#cb3-4"></a>b9 e2 86 94 ef b8 8f f0 9f 94 b9 f0 9f 91 a4 f0 </span>
+<span id="cb3-5"><a href="#cb3-5"></a>9f 94 b8 43 46 4f 0a 30 f0 9f 94 b8 36 f0 9f 94 </span>
+<span id="cb3-6"><a href="#cb3-6"></a>b8 31 31 e2 96 aa ef b8 8f e2 9a 97 ef b8 8f f0 </span>
+<span id="cb3-7"><a href="#cb3-7"></a>9f 94 b8 32 f0 9f 94 b9 e2 86 94 ef b8 8f f0 9f </span>
+<span id="cb3-8"><a href="#cb3-8"></a>94 b9 f0 9f 91 a4 f0 9f 94 b8 43 46 4f 0a </span></code></pre>
+      </div>
+      <p>This is Python code that will convert lines of triples into
+        the matching UTF-8 encoding on the file system:</p>
+      <div class="sourceCode" id="cb4">
+        <pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>lines<span class="op">=</span><span class="st">&#39;&#39;&#39;0🔸6🔸11▪️⚗️🔸1🔹↔️🔹👤🔸CFO</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="st">0🔸6🔸11▪️⚗️🔸2🔹↔️🔹👤🔸CFO</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>h<span class="op">=</span>lines.encode(<span class="st">&quot;utf-8&quot;</span>).<span class="bu">hex</span>()</span>
+<span id="cb4-5"><a href="#cb4-5"></a>hb<span class="op">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>j<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(h),<span class="dv">2</span>):</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="cf">if</span> j<span class="op">==</span><span class="dv">16</span>:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    hb<span class="op">+=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    j<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  j<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  hb<span class="op">+=</span>h[i:i<span class="op">+</span><span class="dv">2</span>]<span class="op">+</span><span class="st">&#39; &#39;</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(hb)</span></code></pre>
+      </div>
+      <p>Run:</p>
+      <div class="sourceCode" id="cb5">
+        <pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">$</span> python3 triples_to_UTF-8.py</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">30</span> f0 9f 94 b8 36 f0 9f 94 b8 31 31 e2 96 aa ef </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">b8</span> 8f e2 9a 97 ef b8 8f f0 9f 94 b8 31 f0 9f 94 </span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="ex">b9</span> e2 86 94 ef b8 8f f0 9f 94 b9 f0 9f 91 a4 f0 </span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="ex">9f</span> 94 b8 43 46 4f 0a 30 f0 9f 94 b8 36 f0 9f 94 </span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="ex">b8</span> 31 31 e2 96 aa ef b8 8f e2 9a 97 ef b8 8f f0 </span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="ex">9f</span> 94 b8 32 f0 9f 94 b9 e2 86 94 ef b8 8f f0 9f </span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="ex">94</span> b9 f0 9f 91 a4 f0 9f 94 b8 43 46 4f 0a </span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="ex">$</span></span></code></pre>
+      </div>
+      <p>The authoritative store can be read directly using these
+        methods and compared against the visualization of the
+        triples.</p>
+      <p>Triples are embedded in the web page using emoji like this <a href="#section-63">(🐟️)</a>:</p>
+      <p>let triples=`🐟🔸1🔹🏷️🔹Party like 1999<br>
+        🐟🔸1🔹📅🔹1999-12-31<br>
+        🐟🔸1🔹📝🔹This is my article`</p>
+      <p>Luckily for us, UTF-8 is a standard, at least now. While
+        emoji vary somewhat between platforms, Unicode pins down the
+        meaning of the sequences fairly well, so the translated images
+        are similar enough for cognition. Be very careful about the
+        store. The web page is on the store, and the sequence of the
+        triples saved in the web page on the file system must follow
+        pure UTF-8, not a visual rendering of UTF-8 that was saved
+        again. It sounds far fetched, but not all Unicode is visible.
+        I’ve had applications render an emoji as a text style, and then
+        I add the character that treats the visualization as a fully
+        qualified emoji. There are also characters that don’t look like
+        anything on the screen, or are slightly different. This means
+        that the scripts above aren’t just educational. Pull out the
+        UTF-8 encoded bits from your web page and make sure the
+        sequences are really what you mean.</p>

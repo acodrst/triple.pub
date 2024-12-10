@@ -1,0 +1,99 @@
+        <h1 id="section-88">🪪 Verification</h1>
+      <p>
+        There are quite a few links in this document. It was created
+        originally in 2023. This can introduce security issues over
+        time, as the web generally rots. Be vigilant about links you
+        click on. I have used the bibliography to protect you, as you
+        can see the reference date. If the wayback machine is still
+        around, use that to see the site in 2023. The integrity of this
+        document itself, particularly since I am releasing CC0, might
+        also be suspect. Integrity of the <a href="https://triple.pub/3sa.160cf83657ab0bba83176257153e0f31.pdf"><span
+            style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+              version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+              <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                  style="font-variant-caps:normal">
+                  <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">3</tspan>
+                </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                  <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">S</tspan>
+                </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                  <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">A</tspan>
+                </text></g>
+            </svg></span>
+          PDF</a> and <a href="https://triple.pub/index.html">HTML</a>
+        versions of this document are verified via RSA signatures <span class="citation"
+          data-cites="bondugula_rsa_2020">(<a href="#ref-bondugula_rsa_2020" role="doc-biblioref">Bondugula
+            2020</a>)</span>.</p>
+      <p><a href="https://triple.pub/tri_pub.pem.txt">Click here for
+          the <span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+              version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+              <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                  style="font-variant-caps:normal">
+                  <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">3</tspan>
+                </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                  <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">S</tspan>
+                </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                  <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                    style="font-variant-caps:normal">A</tspan>
+                </text></g>
+            </svg></span>
+          publisher’s public key</a>. It should match this:</p>
+      <pre><code>-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkAMqIU0MfyQEyMv8Tfiu
+PufGT1pqxqn/dGXnvoU+r5mTjcFwc/f15ALchhlTP0gmVbHayhPhqJ5zcf3ilC8r
+wWaDpsqmKqVZuf7iy3Izt6QV5IE+fXhUXgnkMX+9JfPIJfhz2ubu84OuYw6uKdgm
+7Yy/Utsq8J72JSOZNu0Je+6fAC0hHZocOgjJ1tZsTTD6q/Ygx9/9diPsQkzdNQUv
+9t+r4M5XyArFbV9yI9OoWLI3vO0SsPvGZXZC5NSVFCtnhKSxUmPXUrDm48Zlsvn5
+Nr5CQOWhd7Bpvz/nNPk/Jp9/JZPUJdDya2Ag6Y8hDhd5JP8YSgRwRD2ej2l5LCYS
+hQIDAQAB
+-----END PUBLIC KEY-----</code></pre>
+      <p>As long as you trust that I can secure my private key, and
+        you know the content of my public key, you can verify the
+        integrity with confidence. Note that the public key is also <a
+          href="https://web.archive.org/web/20230506141502/https://triple.pub/tri_pub.pem.txt">archived
+          here on the Wayback machine</a>.</p>
+      <p>For <a href="https://triple.pub/3sa.160cf83657ab0bba83176257153e0f31.pdf">the PDF</a>,
+        verification of the document is described <a href="https://triple.pub/3sa-3sa.pdf-verify.html">here</a>. Here
+        is what it looks like with the 3sa.pdf of today (2023-05-06).
+        The signature will be different for future dates, but the public
+        key will be the same:</p>
+      <div class="sourceCode" id="cb26">
+        <pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">$</span> wget https://triple.pub/tri_pub.pem.txt <span class="at">-q</span> <span class="at">-O</span> tri_pub.pem</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="ex">$</span> cat tri_pub.pem</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="ex">-----BEGIN</span> PUBLIC KEY-----</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="ex">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkAMqIU0MfyQEyMv8Tfiu</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="ex">PufGT1pqxqn/dGXnvoU+r5mTjcFwc/f15ALchhlTP0gmVbHayhPhqJ5zcf3ilC8r</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="ex">wWaDpsqmKqVZuf7iy3Izt6QV5IE+fXhUXgnkMX+9JfPIJfhz2ubu84OuYw6uKdgm</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="ex">7Yy/Utsq8J72JSOZNu0Je+6fAC0hHZocOgjJ1tZsTTD6q/Ygx9/9diPsQkzdNQUv</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="ex">9t+r4M5XyArFbV9yI9OoWLI3vO0SsPvGZXZC5NSVFCtnhKSxUmPXUrDm48Zlsvn5</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="ex">Nr5CQOWhd7Bpvz/nNPk/Jp9/JZPUJdDya2Ag6Y8hDhd5JP8YSgRwRD2ej2l5LCYS</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="ex">hQIDAQAB</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="ex">-----END</span> PUBLIC KEY-----</span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="ex">$</span> wget https://triple.pub/files/3sa.pdf-sig.hex.txt <span class="at">-q</span> <span class="at">-O</span> sig.txt</span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="ex">$</span> cat sig.txt</span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="ex">17a46dbe91722fea1e4916b26fb9302816e1899ae695fdfcf52921020b9e</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="ex">ac69220e63993c6855f91a8689d83293d3bd89acb0d13722a56fb7d3dc29</span></span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="ex">3778469044bef0d13bc632e2850c457bb7611f1744448e1f42c1a428d94b</span></span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="ex">0b77ef572af6a3e079be44e0b806bd1ea8fea97f36ed149df1b35f4fa8c2</span></span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="ex">a47450eb702488ed2ea58b6f8d3eb812670db237357ac4de8bdd034d007c</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a><span class="ex">509e3aafd238cd69b678ce4e0d9519a5a54dbd4484ea92085eef8b1b41e0</span></span>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="ex">8f21f4b1da18c0f0796a19869b61afcb7450b281c0a76d254aa48682e37c</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a><span class="ex">aac0cc03ead9abfdc4f575515e32db0fa2db1b979cd90cdb69de244b3cec</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="ex">235574a8370377fc69ffc31ba8030eb7</span></span>
+<span id="cb26-23"><a href="#cb26-23"></a><span class="ex">$</span> xxd <span class="at">-r</span> <span class="at">-p</span> sig.txt sig.bin</span>
+<span id="cb26-24"><a href="#cb26-24"></a><span class="ex">$</span> openssl dgst <span class="at">-sha256</span> <span class="at">-verify</span> tri_pub.pem <span class="at">-signature</span> sig.bin 3sa.pdf</span>
+<span id="cb26-25"><a href="#cb26-25"></a><span class="ex">Verified</span> OK</span></code></pre>
+      </div>
+      <p>Because of bot mitigation on the main online <a href="https://triple.pub/">Triple Pub page</a>, it is
+        necessary
+        to download the zip file from <a href="https://triple.pub/3sa.zip">here</a>. Extract index.html
+        to the local filesystem.</p>
+      <p>Verify the page like this:</p>
+      <pre><code>$ wget https://triple.pub/files/index.html-sig.hex.txt -q -O sig.txt
+$ xxd -r -p sig.txt sig.bin
+$ openssl dgst -sha256 -verify tri_pub.pem -signature sig.bin index.html
+Verified OK</code></pre>

@@ -1,0 +1,200 @@
+
+      <h3 id="section-46">🔒️ Security</h3>
+      <p>
+        This includes security features like preventing internal users
+        from seeing traffic over the wire. It is not about maintaining
+        security, which would be manageability and
+        maintainability.<br>
+        <span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>:
+        Since the design is a single web page, the page itself needs to
+        be secured appropriately as far as view, and the integrity of
+        the page needs to be audited and enforced.
+      </p>
+      <h1 id="section-47">🧬 Design</h1>
+      <p>
+        <span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        assumes a first time implementation. It is unlikely that
+        collaboration and streams features will be needed right away,
+        and the complication will be in conflict with agility. There are
+        ooodles of people able to do streams work collaboratively with
+        oodles of products, so mostly streams are considered out of
+        scope for <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>.
+        <a href="#section-30">(🤖)</a> The important part is that <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        can co-exist with streams easily. Triples can be passed via
+        streams, and streams can tag triples to pin knowledge. <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        is a bit more than a minimum viable product, but it is
+        close.
+      </p>
+      <p>For more sophisticated use, see Log Integrity, which covers
+        various messaging protocols, collaborative triple creation,
+        identity, integrity, and logging related to <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        <span class="citation" data-cites="h_log_2023">(<a href="#ref-h_log_2023" role="doc-biblioref">H.
+            2023e</a>)</span>. Fig. 19 is an example of the kinds of tech I
+        provide and write about on Log Integrity. I plan to spend more
+        time on Log Integrity after I publish this document. As of May,
+        2023, it is pretty light, just one Plotly Dash example for
+        managing triples for a DFD <span class="citation" data-cites="plotly_plotly_2023">(<a
+            href="#ref-plotly_plotly_2023" role="doc-biblioref">Plotly
+            2023</a>)</span>.
+      </p>
+      <p>I assure you that the <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        design is complete as far as a single-page application that
+        helps people collaboratively model, understand, operate and
+        improve systems using local-first graph analysis, prioritizing
+        human cognition over machine. It is miles above traditional
+        analysis and diagramming tools. I have attempted to constrain it
+        so that it is very solid and useful. It is quite possible to use
+        this outside of multi-level DFDs, but that is the most likely
+        application. <a href="#section-8">(🎼)</a> The design goes
+        wider, though. <a href="#section-52">(🍵)</a> shows how it is
+        possible to cognitively understand a physical supply chain with
+        <span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>.
+      </p>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/console.gif" alt="Log Integrity Demo">
+          <figcaption aria-hidden="true">Log Integrity Demo</figcaption>
+        </figure>
+      </div>
+      <p>On to Triple System Analysis design! Let’s start with the
+        schema, and move on to the components of the single-page
+        app.</p>
+      <h2 id="section-48">🧗 Schema Design</h2>
+      <p>
+        Usually the focus for IT systems is on software that transforms
+        and visualizes the data. Changes to the software are triggered
+        by design considerations and user product requests. <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        pushes the difficult stuff down to the data itself. Most of the
+        lift when implementing this design is deciding what to capture
+        with triples. There are many live examples in the operations
+        section. <a href="#section-59">(⚙️)</a> Schema design is where
+        collaboration happens. Directly coupling human effort in this
+        way facilitates cognition and active, real-time modeling without
+        heavy technical barriers. There is no heavy framework, no
+        software, no cloud, few symbols to learn, and yet it is possible
+        to collaborate on, model, and visualize systems. It is easy to
+        use this same technique with text as shown in <a href="#section-84">(🔠)</a>; however, this design focuses on
+        emoji.</p>

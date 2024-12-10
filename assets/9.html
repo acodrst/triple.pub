@@ -1,0 +1,137 @@
+
+      <h3 id="section-9">💡 Quick to understand</h3>
+      <p>
+        There should be a minimal number of symbols on the map, and they
+        should require only a few minutes to learn. Data flow fits this
+        with just six symbols: three for data flow direction and three
+        for the nodes. This is one of the reasons why I prefer emoji, if
+        possible. Text works, but as I show in <a href="#section-84">(🔠)</a>, it is harder to understand at a
+        glance.</p>
+      <h3 id="section-10">👁️ Stakeholder visibility</h3>
+      <p>
+        Different stakeholders have different needs for visualization.
+        Triples facilitate this, as there are many ways to style the map
+        in an automated way, redrawing and visualizing as needed <span class="citation"
+          data-cites="graphviz_graphviz_2023">(<a href="#ref-graphviz_graphviz_2023" role="doc-biblioref">Graphviz
+            2023</a>)</span>. Narrative can also be tailored and overlaid on
+        top of the graph.</p>
+      <h3 id="section-11">✏️ Easy to change</h3>
+      <p>
+        Modifications to the underlying data should automatically adjust
+        existing maps, and should not require major adjustments to the
+        schema.</p>
+      <h2 id="section-12">☎️ Communication</h2>
+      <p>
+        Wade through the mind-numbing muck of a corporate “what’s wrong
+        with our group” exercise, and you will usually end up with the
+        top ranking advice that better communication is needed. It may
+        seem fruitless to spend all that time arriving at that
+        conclusion <strong><em>every two years</em></strong> like
+        clockwork, but it is still a core problem. Let’s analyze what we
+        mean by communication about systems in crisis. Mostly this
+        involves representing and sharing the knowledge of who, what,
+        when, how, where, and why with a two-way tight coupling with
+        streams and meaning. <a href="#section-29">(🌊)</a> <a href="#section-19">(🧠)</a></p>
+      <h3 id="section-13">📛 Who is participating?</h3>
+      <p>
+        Who are the people contributing to the model of the system? This
+        needs to be traced for several requirements. It is the only real
+        structural requirement, as it is key to collaboration and
+        streams.</p>
+      <h3 id="section-14">🧩 What are we doing? What are the
+        pieces?</h3>
+      <p>
+        What are the pieces of the system being communicated about? What
+        are we doing overall?</p>
+      <h3 id="section-15">🔩 How do the pieces combine? How do we get
+        there?</h3>
+      <p>
+        How do we describe how pieces are related? How do we get to a
+        complete system?</p>
+      <h3 id="section-16">🧭 Where are we going? Where are the
+        interactions?</h3>
+      <p>
+        Where are the interactions we are concerned with in the system?
+        This might be a logical or physical perspective. Where are we
+        going overall?</p>
+      <h3 id="section-17">📅 When are the interactions? When will we
+        arrive?</h3>
+      <p>
+        Are there crucial times or dates associated with the
+        interactions? When will we arrive at our goal?</p>
+      <h3 id="section-18">❓️ Why are we doing this?</h3>
+      <p>
+        Triples are particularly good at establishing why, since they
+        can be added at any point in the process, and with any type of
+        connection or interaction. This doesn’t interfere with velocity,
+        as triples can be attached to the issue and fix, much like a
+        tag, but with an extra dimension. While it is true that most
+        platforms offer notes, they usually don’t offer notes
+        referencing a broader map of “why”.</p>
+      <h2 id="section-19">🧠 Meaning</h2>
+      <p>
+        We need to communicate with agreed meaning in order to store and
+        filter knowledge. Streams, which are often captured without
+        known structure, need AI/ML via models, black box analysis based
+        on standard schemas, or a human hunt and search method to
+        shoehorn meaning on the stream. Triples are better at this,
+        because they are simple enough to be deemed true or false, but
+        can also be put together to form broader, re-usable knowledge.
+        Triples are also extensible to formal knowledge structures with
+        globally agreed-on meaning <span class="citation" data-cites="smith_space_2022">(<a href="#ref-smith_space_2022"
+            role="doc-biblioref">Smith 2022</a>)</span> <span class="citation" data-cites="smith_obo_2007">(<a
+            href="#ref-smith_obo_2007" role="doc-biblioref">Smith et al.
+            2007</a>)</span>. There is no room for confusion about what is
+        meant. If I am stuck in the rain and talking over an unstable
+        connection, and I want to convey that I am in Portland, I might
+        use a standard phonetic alphabet and say “Papa, Oscar, Romeo,
+        Tango, Lima, Alfa, November, Delta” <span class="citation" data-cites="nato_nato_1956">(<a
+            href="#ref-nato_nato_1956" role="doc-biblioref">NATO 1956</a>)</span>. The phonetic
+        alphabet has agreed-on meaning, and is designed so that when
+        transmitted over a stream (radiotelephone), there is a low
+        possibility for confusion over similarly sounding words. Meaning
+        should be quickly established with visual queues when
+        possible.</p>
+      <p>There are several reasons why I conclude that emoji are
+        useful for system analysis:</p>
+      <ul>
+        <li>Immediately recognizable <a href="#section-9">(💡)</a></li>
+        <li>Compact</li>
+        <li>They work well in a graph as a visual node label <a href="#section-6">(🗺️)</a><br>
+        </li>
+        <li>They can be used in filesystem paths and JSON <span class="citation" data-cites="ecma_ecma-404_2017">(<a
+              href="#ref-ecma_ecma-404_2017" role="doc-biblioref">ECMA
+              2017</a>)</span></li>
+        <li>They are fun and pretty</li>
+      </ul>
+      <p>There are also reasons why emoji are bad, primarily
+        compatibility, manageability, maintainability, and security
+        :</p>
+      <ul>
+        <li>Not all applications can view emoji correctly <a href="#section-40">(🧤)</a></li>
+        <li>It can be difficult to maintain and manage emoji mappings to
+          ideas over time. <a href="#section-42">(🎛️)</a> <a href="#section-41">(🔧)</a></li>
+        <li>Invisible elements and alternative visualizations can cause
+          security issues. <a href="#section-46">(🔒️)</a></li>
+      </ul>
+      <p>Long-form text is usually not immediately understood. For
+        many people, only the first couple of sentences is read in a
+        long narrative. Emoji have quite a few quirks that make them
+        difficult to use in knowledge systems; however, from a human
+        perspective it makes understanding systems at rest and in motion
+        much easier. The priority of <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        is human, not machine cognition.</p>

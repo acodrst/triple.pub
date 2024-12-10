@@ -1,0 +1,185 @@
+
+        <h2 id="section-83">🛣️ The Internet and Everything</h2>
+      <p>
+        The number of relations in this example is an edge case of how
+        large a system <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        can handle with human cognition limits, but it might be helpful
+        for understanding how the <a href="#section-47">design</a>
+        works. The Internet and related technology is heavily steeped in
+        graphs. This example uses DNS and WWW/HTML graphs. It is meant
+        for a network engineer, not a layperson. First, let’s use 🏷️ to
+        label some nodes.</p>
+      <p>🛰🔹🏷️🔹Internet<br>
+        🛰🔸🦷🔹🏷️🔹Top level domain (TLD)<br>
+        🛰🔸🍕🔹🏷️🔹Second level domain (2LD)<br>
+        🛰🔸🕴️🔹🏷️🔹Host<br>
+        🛰🔸📛🔹🏷️🔹 IPV4 Address<br>
+        🛰🔸🪧🔹🏷️🔹 IPV6 Address<br>
+        🛰🔸🧑🔹🏷️🔹 2LD Registration Contact<br>
+        🛰🔸🔌🔹🏷️🔹TCP Port<br>
+        🛰🔸🔌🔸🌐🔹🏷️🔹443 w/ HTTPS (website)</p>
+      <p>The English for the third line is “The Internet the concept
+        of a Second level domain (2LD), which we will symbolize by 🍕.”
+        Did I pick 🕴️, because it is Peter Tosh? Most certainly. Peter
+        Tosh is our host in this schema. <span class="citation" data-cites="veix_secret_2016">(<a
+            href="#ref-veix_secret_2016" role="doc-biblioref">Veix 2016</a>)</span> <span class="citation"
+          data-cites="tosh_peter_1984">(<a href="#ref-tosh_peter_1984" role="doc-biblioref">Tosh
+            1984</a>)</span></p>
+      <h3 id="section-84">🔠 ASCII</h3>
+      <p>
+        Using ASCII as triples is also fine:</p>
+      <p>net ^ lbl ^ Internet<br>
+        net ~ TLD ^ lbl ^ Top level domain (TLD)<br>
+        net ~ 2LD ^ lbl ^ Second level domain (2LD)<br>
+        net ~ hst ^ lbl ^ Host<br>
+        net ~ IPV4 ^ lbl ^ IPV4 Address<br>
+        net ~ IPV6 ^ lbl ^ IPV6 Address<br>
+        net ~ TCP ^ lbl ^ TCP Port<br>
+        net ~ TCP ~ 443 ^ lbl ^ HTTPS (website)</p>
+      <p>It is my take that emoji facilitate human cognition in the
+        above example, but human cognition often comes at a cost of
+        scaling, primarily because of machine cognition. <a href="#section-38">(🐡)</a> Some people find icons more
+        difficult to follow than text. The priority of <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        is human cognition, not machine cognition, so whatever works
+        better for your group wins. I am doubling down in emoji in this
+        document, but if ASCII is better for you, go for it.</p>
+      <h3 id="section-85">👫 Mary and Bruce</h3>
+      <p>
+        Mary might put up a collection of recipes at a domain called
+        marysfavs.recipes. Bruce might have another recipe domain that
+        they post to called bruz.hotsauce. Say that Bruce likes a recipe
+        Mary has. They could place a link to the recipe on their
+        bruz.hotsauce domain favorites page without Mary doing a thing.
+        Meanwhile there could be a university somewhere that is
+        categorizing all hot sauces. Bruce might be able to use that,
+        but they don’t have to. We can and will borrow from the magic of
+        the World Wide Web, and bring it back to the web browser where
+        it lives quite well.</p>
+      <h3 id="section-86">🎡 Graph</h3>
+      <p>
+        A graph is a container for the system under analysis, much like
+        Bruce’s burningbruzfoods.hotsauce domain. Pages, labels, images,
+        dates, and links all work within the graph. It is not required;
+        however, if you intend to integrate with other graphs, the graph
+        needs to be unique, much like how if Bruce was only creating
+        recipes for themselves, they could ignore
+        burningbruzfoods.hotsauce references.</p>
+      <h3 id="section-87">🏊️ Deeper</h3>
+      <p>
+        Let’s work with the emoji version, and set up some 🦷, 🍕,
+        and🕴️.</p>
+      <p>🛰🔹🦷🔹recipes<br>
+        🛰🔹🦷🔹hotsauce<br>
+        🛰🔸🦷🔸recipes🔹🍕🔹marysfavs<br>
+        🛰🔸🦷🔸hotsauce🔹🍕🔹bruz<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔹🪧🔹2606:2800:220:1:248:1893:25c8:1946<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔹🪧🔹2606:2800:220:1:248:1893:25c8:1946<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔹📛🔹93.184.216.34<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔹📛🔹93.184.216.34<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔹🧑🔹Mary Jenkins<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔹🧑🔹Bruce Smith<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔹🕴️🔹www<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔹🕴️🔹www</p>
+      <p>The above triples tell us the TLD, 2LD, IP addresses, Domain
+        Owners, and hosts. Notice that I am assigning an IP address to a
+        2LD, even though I have another node that is a host. This
+        illustrates the mixed support of using a 2LD as a host. It is a
+        bit off from a graph perspective.</p>
+      <p>Notice that this is hierarchical, following DNS.</p>
+      <p>🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔹🕴️🔹www:</p>
+      <p>We have a TLD (🦷) of recipes, a 2LD 🍕 of marysfavs, and a
+        hostname (🕴️) of www, i.e. www.recipes.marysfavs.</p>
+      <p>I could enter IP addresses for the hosts, and even TCP 443 w/
+        HTTPS:</p>
+      <p>🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔹📛🔹93.184.216.34<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔸📛🔸93.184.216.34🔹 🔌
+        🔹🌐</p>
+      <p>The convention I’m using is a pair for each node. The first
+        of the pair is the class, and the second forms the ID. This
+        means that the node is unique via the path, the stuff delimited
+        by 🔸. I don’t always do this. 🌐 is a specific instance of 🔌,
+        and 🛰 is the root graph designation.</p>
+      <p>I am crossing/conflating “domains” from a graph sense. There
+        are multiple things going on, here. The IP address is part of
+        its own hierarchy/graph based on networking. I am merging the
+        namespace for the internet with physical aspects. DNS crosses
+        graph domains, going from a taxonomy to OSI layer 3 and 4.</p>
+      <p>I’m still not at “a href”, which is a third domain of HTML.
+        To get there, I need to add some new node types:</p>
+      <p>🛰🔸📑🔹🏷️🔹Index<br>
+        🛰🔸📓🔹🏷️🔹Page<br>
+        🛰🔸✒️🔹🏷️🔹Entry<br>
+        🛰🔸🔗🔹🏷️🔹A HREF hypertext reference</p>
+      <p>Mary’s website, with the front page listing other pages for
+        dinners and lunches, has a recipe for Crispy Eel on the lunches
+        Dinners page:</p>
+      <p>🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸1🔹🏷️🔹Dinners<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔹📑🔹📓🔸1<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔹📑🔹📓🔸2<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸2🔹🏷️🔹Lunches<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸1🔸✒️🔸31🔹🏷️🔹Crispy
+        Eel</p>
+      <p>Notice how these are listed out of order? This triple is a
+        path to the Dinner section and a label:<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸1🔹🏷️🔹Dinners</p>
+      <p>It is above:<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔹📑🔹📓🔸1.</p>
+      <p>We haven’t defined other things, like the title of the index
+        page for the website, that might well be different than the host
+        or domain name. We don’t even have to know what 📑 even means to
+        know that whoever is writing up this schema asserts that the
+        label for the node:<br>
+        🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸1<br>
+        is Dinners. This is one of the magical things about triples. It
+        works on the open world assumption. This helps with
+        collaboration. <a href="#section-25">(👥)</a> As long as
+        everybody agrees on the general schema, the entire system can
+        come together asynchronously. Knowledge arises from the
+        collaboration, rather than needing a lot of up-front work. <a href="#section-21">(🌳)</a> In this case, a
+        bunch of information
+        about the dinners and lunches on the site could be done by
+        somebody with zero knowledge of IP addresses and domain name
+        resolution. This can be rolled in with other information. Even
+        if bits of 🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www change, it is
+        relatively easy to plug existing work into a new schema. <a href="#section-20">(⚛️)</a> On to 🔗!!</p>
+      <p>Here is Bruce’s website:</p>
+      <p>🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔸📑🔸📓🔸1🔹🏷️🔹Favorite
+        Links<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔹📑🔹📓🔸1<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔸📑🔸📓🔸1🔸✒️🔸3🔹🏷️🔹Mary’s
+        Crispy Eel<br>
+        🛰🔸🦷🔸hotsauce🔸🍕🔸bruz🔸🕴️🔸www🔸📑🔸📓🔸1🔸✒️🔸3🔹🔗↩︎️<br>
+        🔹🛰🔸🦷🔸recipes🔸🍕🔸marysfavs🔸🕴️🔸www🔸📑🔸📓🔸1🔸✒️🔸31</p>
+      <p>Note that we added a convention of ↩︎️ to mean the triple is
+        split up between lines. That is a completely arbitrary choice,
+        but visually it seems to be fine. We got there. We have a model
+        of a website on the internet, which, at this point in human
+        history for many, is considered everything.</p>

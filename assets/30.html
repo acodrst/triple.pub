@@ -1,0 +1,126 @@
+
+        <h1 id="section-73">🤳 About Me</h1>
+      <p>
+        … or, how I got the Triple System Analysis bug, and lived to
+        tell about it.</p>
+      <h2 id="section-74">🍺 Homebrew Computer</h2>
+      <p>
+        My interest in maps started with my computing hobby. I purchased
+        a MicroAce kit in 1980 <span class="citation" data-cites="microace_ad_1980">(<a href="#ref-microace_ad_1980"
+            role="doc-biblioref">MicroAce 1980</a>)</span>. I wasn’t
+        satisified. I wanted to know how a computer worked deeper than
+        just entering BASIC, so I decided to build one myself. I
+        completed the first breadboard version of a Z-80 homebrew that
+        same year, in 1980. It failed miserably. I didn’t understand the
+        concept of a high-impedance state for the bus, and I thought my
+        construction technique was creating too much noise. I worked on
+        and off for many years, breadboarding different versions. With
+        the ups and downs in my life, it took awhile to finish. I would
+        go for years at a time without working on it, but I finally
+        completed a working, soldered system in 1992.</p>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/hb20221s.jpg" alt="Homebrew Computer">
+          <figcaption aria-hidden="true">Homebrew Computer</figcaption>
+        </figure>
+      </div>
+      <div class="rightee">
+        <figure>
+          <img src="/images/hb.gif" alt="Click for Der Blinkenlights Vid.">
+          <figcaption aria-hidden="true">Click for Der Blinkenlights
+            Vid.</figcaption>
+        </figure>
+      </div>
+      <p>The display in the upper right of Fig. 30 I soldered first,
+        in 1989. I’m using old 25 pair telco wire. The insulation melted
+        and caused shorts, but I chose it because I owned some at the
+        time. The lower right board that is connected to the bottom of
+        the case holds 2N2222 drivers for lamps, which you can see in
+        Fig. 31, which shows me toggling reset. Right after reset, the
+        lamps in the center, to the right, show the streaming data the
+        homebrew is receiving over a PC parallel port. This is a small
+        bootstrap program that looks for a byte on the parallel port
+        with the correct signal line state, loads it into memory, waits
+        for another state change, loads that byte into memory, repeats
+        until all bytes are loaded, and, finally, jumps back to run the
+        program, which cycles the incandescent lamps and the 7-segment
+        displays <span class="citation" data-cites="triple_pub_my_2023">(<a href="#ref-triple_pub_my_2023"
+            role="doc-biblioref">Triple Pub
+            2023b</a>)</span>. A bootstrap is usually entered through rows
+        of switches and lights called a front panel. I couldn’t afford a
+        proper front panel, so I used dipswitches and a paperclip
+        interface with NAND gates in a set/reset configuration to
+        debounce and enter data. Fig. 32 is what I used to program the
+        bootstrap directly into memory.</p>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/hb20222s.jpg" alt="Paperclip Front Panel">
+          <figcaption aria-hidden="true">Paperclip Front
+            Panel</figcaption>
+        </figure>
+      </div>
+      <div class="rightee">
+        <figure>
+          <img src="/images/solderhb.jpg" alt="Point-to-point on Perfboard">
+          <figcaption aria-hidden="true">Point-to-point on
+            Perfboard</figcaption>
+        </figure>
+      </div>
+      <p>The NAND gates are in the electrical tape wrapped handle of
+        the perfboard. You can see the binary-decimal conversion for the
+        bit locations written in between the paperclips sticking out. As
+        I moved the homebrew around, following jobs and apartments, the
+        solder connections would break, mainly because of bad soldering
+        on my part, in combination with the technical debt of choosing
+        point-to-point solder on perfboard, as shown in Fig. 33. I
+        needed a way to document it, and a schematic which doubled as a
+        physical diagram of the pinouts was the most effective reference
+        for troubleshooting. When I first breadboarded this, I started
+        with the hand-drawn diagram in Fig. 34.</p>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/hborig.jpg" alt="Original Hand-drawn Homebrew Schematic">
+          <figcaption aria-hidden="true">Original Hand-drawn Homebrew
+            Schematic</figcaption>
+        </figure>
+      </div>
+      <div class="figclick">
+        <a href="/images/hborigfull.jpg">Click here for full
+          drawing.</a>
+      </div>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/hb2.png" alt="1997 Diagram">
+          <figcaption aria-hidden="true">1997 Diagram</figcaption>
+        </figure>
+      </div>
+      <div class="figclick">
+        <a href="/images/hb2.svg">Click here for vector version.</a>
+      </div>
+      <div class="leftee">
+        <figure>
+          <img src="/images/trouble.jpg" alt="Fixing the Solder Joints">
+          <figcaption aria-hidden="true">Fixing the Solder
+            Joints</figcaption>
+        </figure>
+      </div>
+      <p>I spent quite a few staycations looking at something like
+        Fig. 36 My hand drawn version worked OK, but I realized that
+        legible hand-drawn lines would be difficult to manage, and
+        finishing the hand-drawn version would likely end in failure. I
+        tried a variety of diagram programs, but the only one that
+        worked for what I needed, that didn’t cost too much, was Xfig,
+        which I used to create Fig. 35. Xfig only ran on *NIX systems,
+        and was my early motivation to learn GNU/Linux <span class="citation" data-cites="noauthor_xfig_2021">(<a
+            href="#ref-noauthor_xfig_2021" role="doc-biblioref"><span>“<span>XFig</span> <span>User</span>
+              <span>Manual</span>”</span> 2021</a>)</span>. Wiring functions
+        like a graph, where the edge is a wire connecting the nodes of
+        two connections. Or alternatively, a schematic is a wiring map.
+        The intention is to create a solder joint that won’t break, but
+        the reality is that they do, and having a map of pinouts and
+        wires goes miles towards keeping the homebrew running. My map
+        distinguished control lines from address and bus with color
+        coding, and curved the lines so they were distinguishable from
+        each other. <span class="citation" data-cites="triple_pub_homebrew_2023">(<a
+            href="#ref-triple_pub_homebrew_2023" role="doc-biblioref">Triple
+            Pub 2023a</a>)</span>.</p>

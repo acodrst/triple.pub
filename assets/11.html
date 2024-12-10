@@ -1,0 +1,109 @@
+
+        <h2 id="section-25">👥 Collaboration</h2>
+      <p>
+        During collaboration, there should be minimal limitations on who
+        can contribute.<a href="#section-25">(👥)</a> If any participant
+        feels something is wrong with the system map being built
+        collaboratively, it should be easy to capture. Likewise, if a
+        particular proposition (triple) is verified by an agreed expert,
+        then that should also be easy to capture. <a href="#section-26">(🛂)</a> Focusing on the core knowledge
+        first, rather than code, platform, frameworks or metal,
+        facilitates collaboration from the start. Further, a focus on
+        decomposed knowledge, coupled with immediate visualization,
+        makes meetings more productive, since there is little delay
+        between gathering knowledge and the visualized model. Decomposed
+        knowledge streams (triples) only require a “lock” or merge on
+        the triple itself <span class="citation" data-cites="kleppmann_local-first_2019">(<a
+            href="#ref-kleppmann_local-first_2019" role="doc-biblioref">Kleppmann et al. 2019</a>)</span> <span
+          class="citation" data-cites="shapiro_conict-free_nodate">(<a href="#ref-shapiro_conict-free_nodate"
+            role="doc-biblioref">Shapiro et al., </a>)</span>. It is less
+        likely that during collaboration one person will step on
+        another, e.g., one person might change the title while somebody
+        else is editing the description. The big win for collaboration
+        is on multi-level data flow diagrams (DFDs), as different areas
+        of expertise can collaborate concurrently to build the
+        models.</p>
+      <h3 id="section-26">🛂 Validate</h3>
+      <p>
+        As the model is built, we should be able to agree and document
+        validation. If we are modeling a system with a database, and
+        need to understand failover procedures, who validates that
+        information? <a href="#section-13">(📛)</a> Triples facilitate
+        this by providing a mechanism to detail what an aspect means,
+        and what the aspects used to describe those aspects mean. If a
+        failover procedure to provide availability requires particular
+        staff, this can be added. A famous example from when many
+        businesses used on-premises database clusters, is failing back a
+        failed database to ensure it can fail again, if it wasn’t
+        possible or convenient to automate. Even if it is convenient,
+        who verifies that the process works? Who verifies it when
+        storage is changed? The design might specify active/passive
+        failover to meet the availability requirements, but there is
+        another entire graph of aspects that can be added on and changed
+        easily about the details, without losing the original effort. If
+        the CIO validated the triple “availability must_be 99.999”, then
+        this implies 24/7 DBA staff that understand how to failover the
+        database, orchestration with the storage team, contracts for
+        storage, server, and software maintenance, and even HR
+        relationships. None of this contradicts the original triple of
+        availability that the CIO validated. Building these kinds of
+        open structures work for more than just IT. It provides both
+        elemental facts (atoms), but collaborative ways to build real
+        meaning and validation and avoid erroneous conclusions, like “we
+        are running at 99.999 availability because the CIO validated it”
+        <span class="citation" data-cites="ciaranhickey_how_2022">(<a href="#ref-ciaranhickey_how_2022"
+            role="doc-biblioref">ciaranhickey 2022</a>)</span>. <a href="#section-20">(⚛️)</a>
+      </p>
+      <h3 id="section-27">📒 Accountable</h3>
+      <p>
+        Participation often requires accountability. If I analyze a
+        system, I am accountable for my work. Likewise, others who
+        participate should be held accountable for their efforts. This
+        is in a different direction than who validates. I might be
+        responsible for determining who validates the database failover
+        procedures. I then document them and get somebody to validate
+        it. This also requires identity. <a href="#section-13">(📛)</a></p>
+      <h3 id="section-28">⚖️ Contribute</h3>
+      <p>
+        One of the reasons that the Whiteboard and Stickies exercise
+        works so well is that everybody can contribute. <a href="#section-1">(📌)</a> Rabbit holes are often revealed
+        that
+        need to be explored later. While it is true that there are often
+        an abundance of ideas, yet few are actionable, triples allow
+        these to exist with a minimum of meeting derailment. For
+        instance, “One time five years ago we were down for three days
+        because Mary left, and we never got another DBA with storage
+        experience,” is a perfectly good collection of triples. (Mary
+        was DBA, Mary had storage experience, We were down five years
+        ago. The incident five years ago lasted three days. The incident
+        could have been resolved if the current DBA had storage
+        experience.) If, upon investigation, it is realized that the
+        real reason the database was down was that the firmware on the
+        storage array was upgraded, the rest of the triples are still
+        valid. At the same time, the only thing that needs to take place
+        in the meeting is a sticky note on the whiteboard that says
+        “Fred: One time five years ago we were down for three days
+        because Mary left, and we never got another DBA with storage
+        experience”. The same exact note can be put down to be moved to
+        triples later, matched against the appropriate knowledge graph,
+        or visualized immediately by utilizing the tools described in
+        this paper. <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        shares some features with mind mapping <span class="citation" data-cites="sheng_huang_goodbye_2022">(<a
+            href="#ref-sheng_huang_goodbye_2022" role="doc-biblioref">Sheng
+            Huang 2022</a>)</span>. <a href="#section-82">(🪸)</a></p>
+
+

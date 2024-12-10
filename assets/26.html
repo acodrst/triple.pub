@@ -1,0 +1,87 @@
+      <h2 id="section-61">📺 Examples</h2>
+      <p>
+        These examples all fit the design. They are single page apps
+        that process triples into JSON and then interactively
+        visualize.</p>
+      <h3 id="section-62">🚂 Graph Traversal and Analysis</h3>
+      <p>
+        <span class="citation" data-cites="h1z_1855_nodate">(<a href="#ref-h1z_1855_nodate" role="doc-biblioref">The
+            🚂 demo
+            site </a>)</span> has analysis tools available that can be used
+        within the SPA. It is also a good example of why paths can
+        become a problem. Consider Fig. 27.
+      </p>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/arerail.png" alt="1855 Railway">
+          <figcaption aria-hidden="true">1855 Railway</figcaption>
+        </figure>
+      </div>
+      <p>This would be a bad choice for a taxonomy. First off, the
+        original diagram has circular connections <span class="citation" data-cites="mccallum_new_1855">(<a
+            href="#ref-mccallum_new_1855" role="doc-biblioref">McCallum and Henshaw 1855</a>)</span>. One
+        end of the line is attached to another end in a circle, but the
+        ends aren’t connected in the diagram. Second, when a station is
+        added, all of the downstream node IDs need to be rewritten.
+        Instead, my implementation uses IDs without paths, just like
+        grup graphs do <span class="citation" data-cites="noauthor_miri_1966">(<a href="#ref-noauthor_miri_1966"
+            role="doc-biblioref"><span>“Miri
+              (Episode)”</span> 1966</a>)</span>). Here are the nodes:</p>
+      <p>🛤🔸1🔹↔️🔹🛤🔸6<br>
+        🛤🔸2🔹↔️🔹🛤🔸7<br>
+        🛤🔸3🔹↔️🔹🛤🔸8<br>
+        🛤🔸8🔹↔️🔹🛤🔸11<br>
+        🛤🔸11🔹↔️🔹🛤🔸12<br>
+        🛤🔸4🔹↔️🔹🛤🔸9<br>
+        🛤🔸5🔹↔️🔹🛤🔸10<br>
+        🛤🔸7🔹↔️🔹🛤🔸13<br>
+        🛤🔸13🔹↔️🔹🛤🔸14<br>
+        🛤🔸9🔹↔️🔹🛤🔸16<br>
+        🛤🔸16🔹↔️🔹🛤🔸17<br>
+        🧑🔸1🔹🧍🔹🧑🔸6<br>
+        🧑🔸1🔹🧍🔹🧑🔸5<br>
+        🧑🔸1🔹🧍🔹🧑🔸4<br>
+        🧑🔸1🔹🧍🔹🧑🔸3<br>
+        🧑🔸1🔹🧍🔹🧑🔸2<br>
+        🧑🔸2🔹🧍🔹🛤🔸1<br>
+        🧑🔸3🔹🧍🔹🛤🔸2<br>
+        🧑🔸4🔹🧍🔹🛤🔸3<br>
+        🧑🔸5🔹🧍🔹🛤🔸4<br>
+        🧑🔸6🔹🧍🔹🛤🔸5</p>
+      <p>🧑 is the logical chain of command before the stations, and 🛤
+        is the chain of physical stations. Notice that there are two
+        relations, one between people, and one between stations. This is
+        a feature of the 1855 diagram, which shows how useful scruffy
+        can be if humans are visualizing. The diagram would quite likely
+        be confusing to a machine.</p>
+      <p>Th code below uses a breadth-first search off of the root
+        node to enumerate the tracks off of 🧑🔸1, the general
+        superintendent. This will establish the first set of
+        subordinates by division, which are also tracks:</p>
+      <div class="sourceCode" id="cb19">
+        <pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1"></a> <span class="kw">let</span> rt<span class="op">=</span>cy<span class="op">.</span><span class="fu">filter</span>(<span class="st">&#39;node[id=&quot;🧑🔸1&quot;]&#39;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>  cy<span class="op">.</span><span class="fu">elements</span>()<span class="op">.</span><span class="fu">bfs</span>({</span>
+<span id="cb19-3"><a href="#cb19-3"></a>    <span class="dt">roots</span><span class="op">:</span> rt<span class="op">,</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="dt">visit</span><span class="op">:</span> <span class="kw">function</span> (v<span class="op">,</span> e<span class="op">,</span> u<span class="op">,</span> i<span class="op">,</span> depth) {</span>
+<span id="cb19-5"><a href="#cb19-5"></a>      <span class="cf">if</span> (depth<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> v<span class="op">.</span><span class="fu">id</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)[<span class="dv">0</span>]<span class="op">==</span><span class="st">&#39;🧑&#39;</span>){</span>
+<span id="cb19-6"><a href="#cb19-6"></a>        dct[<span class="st">&#39;🧑🧑&#39;</span>][v<span class="op">.</span><span class="fu">id</span>()] <span class="op">=</span> {}</span>
+<span id="cb19-7"><a href="#cb19-7"></a>      }</span>
+<span id="cb19-8"><a href="#cb19-8"></a>    }</span>
+<span id="cb19-9"><a href="#cb19-9"></a>  })</span></code></pre>
+      </div>
+      <p>We then take a node and calculate the shortest path back to
+        🧑🔸1, using Cytoscape JS aStar to figure out what track it is
+        on, and do some trigonometry to plot the station:</p>
+      <div class="sourceCode" id="cb20">
+        <pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">let</span> pth<span class="op">=</span>cy<span class="op">.</span><span class="fu">elements</span>()<span class="op">.</span><span class="fu">aStar</span>({ <span class="dt">root</span><span class="op">:</span> rt<span class="op">,</span> <span class="dt">goal</span><span class="op">:</span> node})</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="cf">for</span> (<span class="kw">let</span> n <span class="kw">of</span> pth<span class="op">.</span><span class="at">path</span>){</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="cf">if</span> (n<span class="op">.</span><span class="fu">data</span>()<span class="op">.</span><span class="at">id</span> <span class="kw">in</span> dct[<span class="st">&#39;🧑🧑&#39;</span>]  <span class="op">&amp;&amp;</span> node<span class="op">.</span><span class="fu">id</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)[<span class="dv">0</span>]<span class="op">==</span><span class="st">&#39;🛤&#39;</span> <span class="op">&amp;&amp;</span> node<span class="op">.</span><span class="fu">id</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">.</span><span class="at">length</span><span class="op">==</span><span class="dv">2</span>){</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    num<span class="op">=</span><span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(dct[<span class="st">&#39;🧑🧑&#39;</span>])<span class="op">.</span><span class="fu">indexOf</span>(n<span class="op">.</span><span class="fu">data</span>()<span class="op">.</span><span class="at">id</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    ang<span class="op">=</span>(num<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)<span class="op">/</span><span class="dv">6</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="kw">let</span> x<span class="op">=</span>w<span class="op">/</span><span class="dv">2</span><span class="op">+</span>pth<span class="op">.</span><span class="at">distance</span><span class="op">*</span><span class="dv">290</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(ang)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="kw">let</span> y<span class="op">=</span>h<span class="op">-</span>pth<span class="op">.</span><span class="at">distance</span><span class="op">*</span><span class="dv">290</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(ang)</span>
+<span id="cb20-8"><a href="#cb20-8"></a>    dct[<span class="st">&#39;🛤&#39;</span>][node<span class="op">.</span><span class="fu">id</span>()]<span class="op">=</span>{<span class="st">&quot;line&quot;</span><span class="op">:</span>num<span class="op">,</span><span class="st">&quot;x&quot;</span><span class="op">:</span>x<span class="op">,</span><span class="st">&quot;y&quot;</span><span class="op">:</span>y<span class="op">,</span><span class="st">&quot;ang&quot;</span><span class="op">:</span> ang}</span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="cf">return</span> {<span class="st">&quot;x&quot;</span><span class="op">:</span>x<span class="op">,</span><span class="st">&quot;y&quot;</span><span class="op">:</span>y}</span>
+<span id="cb20-10"><a href="#cb20-10"></a>  }</span>
+<span id="cb20-11"><a href="#cb20-11"></a>}</span></code></pre>
+      </div>

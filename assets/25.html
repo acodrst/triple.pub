@@ -1,0 +1,161 @@
+            <h1 id="section-59">⚙️ Operations</h1>
+      <p>
+        This section shows how to operate systems based on the design.
+        Since operating a SPA on a file system by opening in a web
+        browser is trivial by design, operations involves implementing
+        the design with code, and ensuring data and visualization
+        extensibility aspects.</p>
+      <h2 id="section-60">🕵️ Inference</h2>
+      <p>
+        This is a stretch, an extensibility aspect that might be prudent
+        to consider while making the gathered knowledge operational. <a href="#section-39">(🪜)</a> I’m including it
+        in operations, as
+        the integration is likely an ongoing process. Further, as long
+        as inference is explored as part of the design considerations,
+        inference can be decoupled from other data flows, much like how
+        data warehousing and reporting can be decoupled.</p>
+      <p>Inference takes a set of triples and deductively infers new
+        triples <span class="citation" data-cites="marklogic_inference_2023">(<a href="#ref-marklogic_inference_2023"
+            role="doc-biblioref">MarkLogic 2023</a>)</span>. I’m taking many
+        liberties by hacking up perfectly good machine cognition work
+        started by Tim Berners-Lee and the RDF/OWL Semantic Web crowd
+        through to Barry Smith and BFO <span class="citation" data-cites="w3c_semantic_2023">(<a
+            href="#ref-w3c_semantic_2023" role="doc-biblioref">W3C 2023</a>)</span> <span class="citation"
+          data-cites="bergman_knowledge_2018">(<a href="#ref-bergman_knowledge_2018" role="doc-biblioref">Bergman
+            2018a</a>)</span> <span class="citation" data-cites="kabilan_ontology_2007">(<a
+            href="#ref-kabilan_ontology_2007" role="doc-biblioref">Kabilan
+            2007</a>)</span> <span class="citation" data-cites="bergman_krp2_2018">(<a href="#ref-bergman_krp2_2018"
+            role="doc-biblioref">Bergman 2018b</a>)</span>. BFO uses
+        philosophical terms like “One-dimensional continuant fiat
+        boundary” <span class="citation" data-cites="arp_building_2015">(<a href="#ref-arp_building_2015"
+            role="doc-biblioref">Arp, Smith, and Spear 2015</a>)</span>. My
+        focus is on human cognition. We have assumed, since the 1960s,
+        that this kind of knowledge was suited to computers and not
+        useful for direct cognition, even though the motivation goes
+        back much further as a foundation for pragmatism <span class="citation" data-cites="brachman_overview_1985">(<a
+            href="#ref-brachman_overview_1985" role="doc-biblioref">Brachman
+            and Schmolze 1985</a>)</span> <span class="citation" data-cites="peirce_how_1878">(<a
+            href="#ref-peirce_how_1878" role="doc-biblioref">Peirce 1878</a>)</span>. Notice in the
+        design, that the machine parts, the compute and visualization,
+        go back and forth between humans and analysis. Black box
+        modeling doesn’t have that tight a loop. It is often one-way,
+        with the models and/or generative AI behind the curtain <span class="citation"
+          data-cites="ayoub_ali_chatgpt-_2023">(<a href="#ref-ayoub_ali_chatgpt-_2023" role="doc-biblioref">Ayoub_Ali
+            2023</a>)</span>. With the
+        constraints I put on nesting and relations, this design can be
+        both be cognitively understood by humans as a system, but can
+        also be loaded into a triple store/graph database for machine
+        cognition. Inference is a big advantage. <a href="#section-51">(⛓️)</a></p>
+      <p>One of the early graph database stars that is still burning
+        bright, and also one of the few truly open source and free as in
+        beer triple stores and analysis tools is Virtuoso. Let’s pull
+        down a Docker image and run it :</p>
+      <div class="sourceCode" id="cb16">
+        <pre
+          class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">docker</span> pull openlink/virtuoso-opensource-7</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">mkdir</span> triple_pub_store</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">cd</span> triple_pub_store</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="ex">docker</span> run <span class="at">--name</span> my_virtdb <span class="at">-e</span> DBA_PASSWORD=dba <span class="at">-p</span> 1111:1111 <span class="dt">\</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>-p 8890:8890 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/database openlink/virtuoso-opensource-7:latest</span></code></pre>
+      </div>
+      <p>Alternatively, compile it <span class="citation" data-cites="software_virtuoso_2023">(<a
+            href="#ref-software_virtuoso_2023" role="doc-biblioref">Software
+            2023</a>)</span>. Pull a set of triples from <span class="citation" data-cites="h_nested_2023">(<a
+            href="#ref-h_nested_2023" role="doc-biblioref">H.
+            2023f</a>)</span>. There are only two predicates in this model
+        🪆 and ↔️. 🪆 are nested processes, so &lt;0🔸⚗️🔸6&gt;
+        &lt;🪆&gt; &lt;0🔸6🔸⚗️🔸1&gt; means &lt;0🔸⚗️🔸6&gt; is the
+        parent nesting doll, and &lt;0🔸6🔸⚗️🔸1&gt; is the next one
+        inside, or &lt;0🔸⚗️🔸6&gt; has_a_sub-process
+        &lt;0🔸6🔸⚗️🔸1&gt;. The &lt; and &gt; need to go around the
+        triples so that Virtuoso sees them as an RDF N-triple form <span class="citation"
+          data-cites="w3c_n-triples_2014">(<a href="#ref-w3c_n-triples_2014" role="doc-biblioref">W3C
+            2014a</a>)</span>. The graph can be any URL (IRI is technically
+        what it is called, but a URL is a kind of IRI) <span class="citation" data-cites="w3c_rdf_2014">(<a
+            href="#ref-w3c_rdf_2014" role="doc-biblioref">W3C
+            2014b</a>)</span>. Load the graph:</p>
+      <pre class="sparql"><code>SPARQL INSERT DATA { GRAPH &lt;triples&gt; {  
+&lt;0🔸⚗️🔸6&gt; &lt;🪆&gt; &lt;0🔸6🔸⚗️🔸1&gt; .  
+&lt;0🔸6🔸⚗️🔸1&gt; &lt;↔️&gt; &lt;0🔸6🔸👤🔸CentA&gt; .  
+&lt;0🔸6🔸⚗️🔸1&gt; &lt;↔️&gt; &lt;0🔸6🔸👤🔸MailR&gt; .  
+.  
+.  
+.  
+&lt;0🔸6🔸⚗️🔸1&gt; &lt;↔️&gt; &lt;0🔸6🔸💽🔸5&gt; .  
+&lt;0🔸6🔸⚗️🔸1&gt; &lt;↔️&gt; &lt;0🔸6🔸💽🔸2&gt; .  
+&lt;0🔸6🔸⚗️🔸1&gt; &lt;↔️&gt; &lt;0🔸6🔸💽🔸7&gt; .  
+}}  </code></pre>
+      <p>See the full set of triples at <span class="citation" data-cites="h_nested_2023">(<a href="#ref-h_nested_2023"
+            role="doc-biblioref">H. 2023f</a>)</span>. Query for processes
+        where a sub-process is 0🔸6🔸6🔸⚗️🔸1:</p>
+      <pre class="sparql"><code>select ?s where {
+  ?s &lt;🪆&gt; &lt;0🔸6🔸6🔸⚗️🔸1&gt; 
+ OPTION (TRANSITIVE,T_DISTINCT,T_NO_CYCLES,T_MIN(0)) . 
+}</code></pre>
+      <div class="centerpage">
+        <figure>
+          <img src="/images/vinf6.png" alt="Inference">
+          <figcaption aria-hidden="true">Inference</figcaption>
+        </figure>
+      </div>
+      <p>This is a trivial example, as we already know from the path
+        that 0🔸6🔸⚗️🔸6 and 0🔸⚗️🔸6 are the parent and grandparent of
+        the tiny Matryoshka doll <span class="citation" data-cites="sokolova_eastern_2014">(<a
+            href="#ref-sokolova_eastern_2014" role="doc-biblioref">Sokolova
+            2014</a>)</span>. That is the whole idea of human cognition, and
+        why Gane and Sarson picked the notation <span class="citation" data-cites="gane_structured_1977">(<a
+            href="#ref-gane_structured_1977" role="doc-biblioref">Gane and
+            Sarson 1977</a>)</span>. It still counts as inference, because
+        we never put in 0🔸⚗️🔸6🔹🪆🔹0🔸6🔸6🔸⚗️🔸1 as a fact. I’m
+        bringing this all up to show that the knowledge we build with
+        <span style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        truly is extensible, and can be easily transformed into proper
+        knowledge within an ontology, if needed for machine cognition
+        <span class="citation" data-cites="h_rdfowl_2023">(<a href="#ref-h_rdfowl_2023" role="doc-biblioref">H.
+            2023g</a>)</span> <span class="citation" data-cites="debruyne_ontology_2019">(<a
+            href="#ref-debruyne_ontology_2019" role="doc-biblioref">Debruyne
+            et al. 2019</a>)</span>. It is a natural next step after
+        capturing the knowledge. There are many less trivial questions
+        that are way beyond the scope of this paper, that are possible,
+        like “if a data store is down, what users are affected?”. This
+        is particularly useful in stream analysis, as it couples human
+        understanding of the system with data streams that humans need
+        machine cognition to visualize. My advice is to trim the scope
+        of direct engagement with <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        and system analysis to minimal triples using emoji and other
+        mnemonic devices that cater to humans. Spin off an operational
+        feed for inference and store, but do it without encumbering the
+        primary effort. For instance, if there is a crisis and a new
+        transport mechanism needs to be implemented to distribute food,
+        then map out the feature aspects for collaboration, knowledge,
+        and communication, etc., design the system for the quality
+        aspects, timebox inference considerations, and get on with the
+        design.
+      </p>

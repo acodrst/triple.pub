@@ -1,0 +1,220 @@
+
+      <h3 id="section-57">📊 Visualization</h3>
+      <p>
+        Quick and collaborative visualization of the system, coupled
+        with the feature of proposition validataion, is the primary
+        advantage of triples. While the preference of humans will vary,
+        designing an interactive, visual scheme that fits the audience
+        and situation is key to successfully collaborating on difficult
+        problems. A fully patched Windows 10, Windows 11, macOS 11+
+        (x86-64 or ARM64), as well as most GNU/Linux distributions with
+        color emoji support can house the filesystem for full view of
+        the files.</p>
+      <p>While <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>
+        focuses on a SPA as the primary container and form of knowledge
+        representation, the ability to export visualizations is a
+        critical part of the design of <span
+          style="height:1em;width:2em;top:.3em;position:relative; display:inline-flex;align-self:center;"><svg
+            version="1.1" viewBox="0 0 33 18" xmlns="http://www.w3.org/2000/svg">
+            <g font-size="16px" font-weight="bold" stroke-width="1.4"><text x="0" y="12" fill="#0077bb"
+                style="font-variant-caps:normal">
+                <tspan x="0" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">3</tspan>
+              </text><text x="10" y="15" fill="#cc3311" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="10" y="15" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">S</tspan>
+              </text><text x="20" y="12" fill="#009988" style="font-variant-caps:normal" xml:space="preserve">
+                <tspan x="20" y="12" font-size="16px" font-weight="bold" stroke-width="1.4"
+                  style="font-variant-caps:normal">A</tspan>
+              </text></g>
+          </svg></span>.</p>
+      <p>For 2D graphs, a preferred export format to use is SVG, as it
+        is vector based. As an example, navagate to <span class="citation" data-cites="h4z_dependency_nodate">(<a
+            href="#ref-h4z_dependency_nodate" role="doc-biblioref">The 🛢️
+            demo site </a>)</span> and click on 📤 to export the graph to an
+        SVG. It is important to allow the user to change the view prior
+        to export if possible i.e. let the user drag nodes around so the
+        graph is clearer. 3D graphs are more difficult, as they often
+        don’t render in 2D in a useful way. Since the SPA has the
+        ability to render the 3D graph, though, and there are no
+        external dependencies, this mitigates the risk to
+        persistence.</p>
+      <p>For a 2D interactive SPA, Cytoscape can directly transform
+        the triples into a graph. First, load the triples into the a
+        dictionary of elements and style:</p>
+      <div class="sourceCode" id="cb12">
+        <pre
+          class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">let</span> lines_to_data <span class="op">=</span> (dct) <span class="kw">=&gt;</span>{</span>
+<span id="cb12-2"><a href="#cb12-2"></a>dct[<span class="st">&#39;💄&#39;</span>]<span class="op">=</span>{}</span>
+<span id="cb12-3"><a href="#cb12-3"></a>dct[<span class="st">&#39;⚛️&#39;</span>]<span class="op">=</span>{}</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> lines){</span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="kw">let</span> [s<span class="op">,</span>o]<span class="op">=</span>i<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;⬅️&#39;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  dct[<span class="st">&#39;⚛️&#39;</span>][s]<span class="op">=</span>{<span class="st">&quot;data&quot;</span><span class="op">:</span>{<span class="st">&quot;id&quot;</span><span class="op">:</span> s<span class="op">,</span><span class="st">&quot;type&quot;</span><span class="op">:</span><span class="st">&quot;node&quot;</span><span class="op">,</span><span class="st">&quot;label&quot;</span><span class="op">:</span>s}}</span>
+<span id="cb12-7"><a href="#cb12-7"></a>  dct[<span class="st">&#39;⚛️&#39;</span>][o]<span class="op">=</span>{<span class="st">&quot;data&quot;</span><span class="op">:</span>{<span class="st">&quot;id&quot;</span><span class="op">:</span> o<span class="op">,</span><span class="st">&quot;type&quot;</span><span class="op">:</span><span class="st">&quot;node&quot;</span><span class="op">,</span><span class="st">&quot;label&quot;</span><span class="op">:</span>o}}</span>
+<span id="cb12-8"><a href="#cb12-8"></a>  dct[<span class="st">&#39;⚛️&#39;</span>][s<span class="op">+</span><span class="st">&#39;🔸&#39;</span><span class="op">+</span>o]<span class="op">=</span>{<span class="st">&quot;data&quot;</span><span class="op">:</span>{<span class="st">&quot;id&quot;</span><span class="op">:</span> s<span class="op">+</span><span class="st">&#39;🔸&#39;</span><span class="op">+</span>o<span class="op">,</span><span class="st">&quot;source&quot;</span><span class="op">:</span> o<span class="op">,</span><span class="st">&quot;target&quot;</span><span class="op">:</span>s}<span class="op">,</span><span class="st">&quot;type&quot;</span><span class="op">:</span><span class="st">&quot;edge&quot;</span>}</span>
+<span id="cb12-9"><a href="#cb12-9"></a>}</span>
+<span id="cb12-10"><a href="#cb12-10"></a>dct[<span class="st">&#39;💄&#39;</span>][<span class="st">&#39;edge&#39;</span>]<span class="op">=</span>{<span class="dt">selector</span><span class="op">:</span> <span class="st">&quot;edge&quot;</span><span class="op">,</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>          <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb12-12"><a href="#cb12-12"></a>              <span class="st">&quot;width&quot;</span><span class="op">:</span> <span class="st">&quot;2px&quot;</span><span class="op">,</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>              <span class="st">&quot;line-color&quot;</span><span class="op">:</span> <span class="st">&quot;black&quot;</span><span class="op">,</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>              <span class="st">&quot;mid-target-arrow-shape&quot;</span><span class="op">:</span> <span class="st">&quot;triangle&quot;</span><span class="op">,</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>              <span class="st">&quot;mid-target-arrow-color&quot;</span><span class="op">:</span> <span class="st">&quot;black&quot;</span><span class="op">,</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>              <span class="st">&quot;curve-style&quot;</span><span class="op">:</span> <span class="st">&quot;bezier&quot;</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>}}</span>
+<span id="cb12-18"><a href="#cb12-18"></a>dct[<span class="st">&#39;💄&#39;</span>][<span class="st">&#39;node&#39;</span>]<span class="op">=</span>{<span class="dt">selector</span><span class="op">:</span> <span class="st">&#39;node&#39;</span><span class="op">,</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>            <span class="dt">style</span><span class="op">:</span>{</span>
+<span id="cb12-20"><a href="#cb12-20"></a>              <span class="st">&quot;content&quot;</span><span class="op">:</span><span class="st">&quot;data(label)&quot;</span><span class="op">,</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>                  <span class="st">&quot;text-halign&quot;</span><span class="op">:</span><span class="st">&quot;center&quot;</span><span class="op">,</span></span>
+<span id="cb12-22"><a href="#cb12-22"></a>                <span class="st">&quot;text-valign&quot;</span><span class="op">:</span><span class="st">&quot;center&quot;</span><span class="op">,</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a>                <span class="st">&quot;font-size&quot;</span><span class="op">:</span><span class="st">&quot;48px&quot;</span><span class="op">,</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>                <span class="st">&quot;text-background-padding&quot;</span><span class="op">:</span> <span class="st">&quot;5&quot;</span><span class="op">,</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a>                <span class="st">&quot;text-background-opacity&quot;</span><span class="op">:</span><span class="st">&quot;0&quot;</span><span class="op">,</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a>                <span class="st">&quot;background-opacity&quot;</span><span class="op">:</span><span class="st">&quot;0&quot;</span><span class="op">,</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a>                <span class="st">&quot;width&quot;</span><span class="op">:</span><span class="st">&quot;50px&quot;</span><span class="op">,</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a>                <span class="st">&quot;height&quot;</span><span class="op">:</span><span class="st">&quot;50px&quot;</span><span class="op">,</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a>          <span class="st">&quot;background-color&quot;</span><span class="op">:</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb12-30"><a href="#cb12-30"></a>            }</span>
+<span id="cb12-31"><a href="#cb12-31"></a>          }</span>
+<span id="cb12-32"><a href="#cb12-32"></a>  <span class="cf">return</span> dct</span>
+<span id="cb12-33"><a href="#cb12-33"></a>}</span>
+<span id="cb12-34"><a href="#cb12-34"></a><span class="kw">let</span> data<span class="op">=</span><span class="fu">lines_to_data</span>({})</span></code></pre>
+      </div>
+      <p>Then, set up your interactive Cytoscape graph, using the the
+        elements and style dictionary:</p>
+      <div class="sourceCode" id="cb13">
+        <pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">let</span> initiate <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  main_content<span class="op">.</span><span class="at">innerHTML</span><span class="op">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>cy <span class="op">=</span> <span class="fu">cytoscape</span>({</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="dt">container</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;main_content&#39;</span>)<span class="op">,</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="dt">layout</span><span class="op">:</span> {</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;dagre&#39;</span><span class="op">,</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="dt">directed</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="dt">animate</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span> </span>
+<span id="cb13-10"><a href="#cb13-10"></a>  }<span class="op">,</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="dt">elements</span><span class="op">:</span><span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(data[<span class="st">&#39;⚛️&#39;</span>])<span class="op">,</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="dt">style</span><span class="op">:</span><span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(data[<span class="st">&#39;💄&#39;</span>])</span>
+<span id="cb13-13"><a href="#cb13-13"></a>})</span>
+<span id="cb13-14"><a href="#cb13-14"></a>  cy<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;mouseover&#39;</span><span class="op">,</span> <span class="st">&#39;node&#39;</span><span class="op">,</span> <span class="kw">function</span>(evt){</span>
+<span id="cb13-15"><a href="#cb13-15"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;border-width&quot;</span><span class="op">:</span><span class="st">&quot;6px&quot;</span><span class="op">,</span><span class="st">&quot;border-color&quot;</span><span class="op">:</span><span class="st">&quot;#0077BB&quot;</span>})<span class="op">;</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">incomers</span>(<span class="st">&quot;edge&quot;</span>)<span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;width&quot;</span><span class="op">:</span> <span class="st">&quot;6px&quot;</span><span class="op">,</span><span class="st">&quot;line-color&quot;</span><span class="op">:</span> <span class="st">&quot;#CC3311&quot;</span> })</span>
+<span id="cb13-17"><a href="#cb13-17"></a>  })</span>
+<span id="cb13-18"><a href="#cb13-18"></a>  cy<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;mouseover&#39;</span><span class="op">,</span> <span class="st">&#39;edge&#39;</span><span class="op">,</span> <span class="kw">function</span>(evt){ </span>
+<span id="cb13-19"><a href="#cb13-19"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;width&quot;</span><span class="op">:</span> <span class="st">&quot;6px&quot;</span><span class="op">,</span><span class="st">&quot;line-color&quot;</span><span class="op">:</span> <span class="st">&quot;#CC3311&quot;</span> })</span>
+<span id="cb13-20"><a href="#cb13-20"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">connectedNodes</span>()<span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;border-width&quot;</span><span class="op">:</span><span class="st">&quot;6px&quot;</span><span class="op">,</span><span class="st">&quot;border-color&quot;</span><span class="op">:</span><span class="st">&quot;#0077BB&quot;</span>})</span>
+<span id="cb13-21"><a href="#cb13-21"></a>  })</span>
+<span id="cb13-22"><a href="#cb13-22"></a>  cy<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;mouseout&#39;</span><span class="op">,</span> <span class="st">&#39;node&#39;</span><span class="op">,</span> <span class="kw">function</span>(evt){ </span>
+<span id="cb13-23"><a href="#cb13-23"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;border-width&quot;</span><span class="op">:</span><span class="st">&quot;0px&quot;</span>})<span class="op">;</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">incomers</span>(<span class="st">&quot;edge&quot;</span>)<span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;width&quot;</span><span class="op">:</span> <span class="st">&quot;2px&quot;</span><span class="op">,</span><span class="st">&quot;line-color&quot;</span><span class="op">:</span> <span class="st">&quot;black&quot;</span> })</span>
+<span id="cb13-25"><a href="#cb13-25"></a>  })</span>
+<span id="cb13-26"><a href="#cb13-26"></a>  cy<span class="op">.</span><span class="fu">on</span>(<span class="st">&#39;mouseout&#39;</span><span class="op">,</span> <span class="st">&#39;edge&#39;</span><span class="op">,</span> <span class="kw">function</span>(evt){</span>
+<span id="cb13-27"><a href="#cb13-27"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;width&quot;</span><span class="op">:</span> <span class="st">&quot;2px&quot;</span><span class="op">,</span><span class="st">&quot;line-color&quot;</span><span class="op">:</span> <span class="st">&quot;black&quot;</span> })<span class="op">;</span></span>
+<span id="cb13-28"><a href="#cb13-28"></a>    evt<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">connectedNodes</span>()<span class="op">.</span><span class="fu">style</span>({ <span class="st">&quot;border-width&quot;</span><span class="op">:</span><span class="st">&quot;0px&quot;</span>})<span class="op">;</span></span>
+<span id="cb13-29"><a href="#cb13-29"></a>  })</span>
+<span id="cb13-30"><a href="#cb13-30"></a>  <span class="fu">setup_nav</span>(cy)</span>
+<span id="cb13-31"><a href="#cb13-31"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;sean_button&#39;</span>)<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">visibility</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span></span>
+<span id="cb13-32"><a href="#cb13-32"></a>}</span></code></pre>
+      </div>
+      <p>For 3D graphs, use D3. Process the triples into a
+        dictionary:</p>
+      <div class="sourceCode" id="cb14">
+        <pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">let</span> nodes<span class="op">=</span><span class="kw">new</span> <span class="bu">Set</span>()</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">let</span> edges<span class="op">=</span><span class="kw">new</span> <span class="bu">Set</span>()</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">const</span> prim_rel<span class="op">=</span><span class="st">&#39;↔️➡️⬅️&#39;</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="kw">let</span> grind <span class="op">=</span> (prevpath<span class="op">,</span>path<span class="op">,</span>dct) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="cf">if</span> (path<span class="op">.</span><span class="at">length</span><span class="op">&gt;</span><span class="dv">1</span>){</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="kw">let</span> curnew<span class="op">=</span>path<span class="op">.</span><span class="fu">shift</span>()</span>
+<span id="cb14-7"><a href="#cb14-7"></a>      <span class="kw">let</span> s<span class="op">=</span>prevpath<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">+</span><span class="st">&#39;🔸⚗️🔸&#39;</span><span class="op">+</span>curnew</span>
+<span id="cb14-8"><a href="#cb14-8"></a>      <span class="kw">let</span> o<span class="op">=</span>prevpath<span class="op">.</span><span class="fu">concat</span>(curnew)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">+</span><span class="st">&#39;🔸⚗️🔸&#39;</span><span class="op">+</span>path<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>)</span>
+<span id="cb14-9"><a href="#cb14-9"></a>      edges<span class="op">.</span><span class="fu">add</span>(s<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span>o)</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    prevpath<span class="op">.</span><span class="fu">push</span>(curnew)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    <span class="fu">grind</span>(prevpath<span class="op">,</span>path<span class="op">,</span>dct)</span>
+<span id="cb14-12"><a href="#cb14-12"></a>  }</span>
+<span id="cb14-13"><a href="#cb14-13"></a>  <span class="cf">return</span>(prevpath)</span>
+<span id="cb14-14"><a href="#cb14-14"></a>}</span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="kw">let</span> lines_to_data <span class="op">=</span> (dct) <span class="kw">=&gt;</span>{</span>
+<span id="cb14-16"><a href="#cb14-16"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> lines){</span>
+<span id="cb14-17"><a href="#cb14-17"></a>    <span class="kw">let</span> [s<span class="op">,</span>p<span class="op">,</span>o]<span class="op">=</span>i<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔹&#39;</span>)</span>
+<span id="cb14-18"><a href="#cb14-18"></a>     _<span class="op">.</span><span class="fu">setWith</span>(dct<span class="op">,</span>[s<span class="op">,</span>p<span class="op">,</span>o]<span class="op">,</span><span class="st">&#39;&#39;</span><span class="op">,</span><span class="bu">Object</span>)</span>
+<span id="cb14-19"><a href="#cb14-19"></a>  }</span>
+<span id="cb14-20"><a href="#cb14-20"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> lines){</span>
+<span id="cb14-21"><a href="#cb14-21"></a>    <span class="kw">let</span> [s<span class="op">,</span>p<span class="op">,</span>o]<span class="op">=</span>i<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔹&#39;</span>)</span>
+<span id="cb14-22"><a href="#cb14-22"></a>    <span class="cf">if</span> (prim_rel<span class="op">.</span><span class="fu">includes</span>(p)){</span>
+<span id="cb14-23"><a href="#cb14-23"></a>      <span class="kw">let</span> ls<span class="op">=</span>s<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">.</span><span class="fu">slice</span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-24"><a href="#cb14-24"></a>      <span class="kw">let</span> lo<span class="op">=</span>o<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">.</span><span class="fu">slice</span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-25"><a href="#cb14-25"></a>      <span class="kw">let</span> a<span class="op">=</span>s<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span><span class="op">,-</span><span class="dv">2</span>)<span class="op">.</span><span class="fu">concat</span>(s<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">.</span><span class="fu">slice</span>(<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb14-26"><a href="#cb14-26"></a>      <span class="kw">let</span> level<span class="op">=</span><span class="fu">grind</span>([<span class="st">&#39;0&#39;</span>]<span class="op">,</span>a<span class="op">,</span>dct)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;🔸&#39;</span>)<span class="op">+</span><span class="st">&#39;🔸&#39;</span></span>
+<span id="cb14-27"><a href="#cb14-27"></a>      nodes<span class="op">.</span><span class="fu">add</span>(s<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span>ls<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span><span class="fu">vl</span>(dct<span class="op">,</span>[s<span class="op">,</span><span class="st">&#39;🏷&#39;</span>])<span class="op">.</span><span class="fu">replaceAll</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">n&#39;</span><span class="op">,</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>))</span>
+<span id="cb14-28"><a href="#cb14-28"></a>      nodes<span class="op">.</span><span class="fu">add</span>(level<span class="op">+</span>o<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span>lo<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span><span class="fu">vl</span>(dct<span class="op">,</span>[level<span class="op">+</span>o<span class="op">,</span><span class="st">&#39;🏷&#39;</span>])<span class="op">.</span><span class="fu">replaceAll</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">n&#39;</span><span class="op">,</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>))</span>
+<span id="cb14-29"><a href="#cb14-29"></a>      edges<span class="op">.</span><span class="fu">add</span>(s<span class="op">+</span><span class="st">&#39;🔹&#39;</span><span class="op">+</span>level<span class="op">+</span>o)</span>
+<span id="cb14-30"><a href="#cb14-30"></a>    }</span>
+<span id="cb14-31"><a href="#cb14-31"></a>  }</span>
+<span id="cb14-32"><a href="#cb14-32"></a>  <span class="cf">return</span> dct</span>
+<span id="cb14-33"><a href="#cb14-33"></a>}</span>
+<span id="cb14-34"><a href="#cb14-34"></a></span>
+<span id="cb14-35"><a href="#cb14-35"></a><span class="kw">let</span> data<span class="op">=</span><span class="fu">lines_to_data</span>({})</span>
+<span id="cb14-36"><a href="#cb14-36"></a></span>
+<span id="cb14-37"><a href="#cb14-37"></a><span class="kw">let</span> update_tri<span class="op">=</span> (tri) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-38"><a href="#cb14-38"></a>  nodes<span class="op">.</span><span class="fu">clear</span>()</span>
+<span id="cb14-39"><a href="#cb14-39"></a>  edges<span class="op">.</span><span class="fu">clear</span>()</span>
+<span id="cb14-40"><a href="#cb14-40"></a>  triples<span class="op">=</span>tri</span>
+<span id="cb14-41"><a href="#cb14-41"></a>  lines<span class="op">=</span>triples<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb14-42"><a href="#cb14-42"></a>  data<span class="op">=</span><span class="fu">lines_to_data</span>({})</span>
+<span id="cb14-43"><a href="#cb14-43"></a>}</span></code></pre>
+      </div>
+      <p>Load the dictionary up in a graph:</p>
+      <div class="sourceCode" id="cb15">
+        <pre class="sourceCode numberSource javascript numberLines"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">let</span> initiate <span class="op">=</span> (dct) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  main_content<span class="op">.</span><span class="at">innerHTML</span><span class="op">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">let</span> fullgraph<span class="op">=</span>{<span class="st">&quot;nodes&quot;</span><span class="op">:</span>[]<span class="op">,</span><span class="st">&quot;links&quot;</span><span class="op">:</span>[]}</span>
+<span id="cb15-4"><a href="#cb15-4"></a>nodes<span class="op">.</span><span class="fu">forEach</span>(n <span class="kw">=&gt;</span>{</span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="kw">let</span> na<span class="op">=</span>n<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔹&#39;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  fullgraph<span class="op">.</span><span class="at">nodes</span><span class="op">.</span><span class="fu">push</span>({<span class="st">&quot;id&quot;</span><span class="op">:</span>na[<span class="dv">0</span>]<span class="op">,</span><span class="st">&quot;label&quot;</span><span class="op">:</span>na[<span class="dv">1</span>]<span class="op">,</span><span class="st">&quot;hover&quot;</span><span class="op">:</span>na[<span class="dv">2</span>]})</span>
+<span id="cb15-7"><a href="#cb15-7"></a>})</span>
+<span id="cb15-8"><a href="#cb15-8"></a>edges<span class="op">.</span><span class="fu">forEach</span>(e <span class="kw">=&gt;</span>{</span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="kw">let</span> ea<span class="op">=</span>e<span class="op">.</span><span class="fu">split</span>(<span class="st">&#39;🔹&#39;</span>)</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  fullgraph<span class="op">.</span><span class="at">links</span><span class="op">.</span><span class="fu">push</span>({<span class="st">&quot;source&quot;</span><span class="op">:</span>ea[<span class="dv">0</span>]<span class="op">,</span><span class="st">&quot;target&quot;</span><span class="op">:</span>ea[<span class="dv">1</span>]})</span>
+<span id="cb15-11"><a href="#cb15-11"></a>})</span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="kw">let</span> gr<span class="op">=</span><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;main_content&quot;</span>)</span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="kw">let</span> wd<span class="op">=</span>gr<span class="op">.</span><span class="at">clientWidth</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="kw">let</span> ht<span class="op">=</span>gr<span class="op">.</span><span class="at">clientHeight</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="kw">const</span> Graph <span class="op">=</span> <span class="fu">ForceGraph3D</span>()</span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="kw">let</span> td<span class="op">=</span><span class="fu">Graph</span>(gr)</span>
+<span id="cb15-17"><a href="#cb15-17"></a>td<span class="op">.</span><span class="fu">width</span>(wd)</span>
+<span id="cb15-18"><a href="#cb15-18"></a>td<span class="op">.</span><span class="fu">height</span>(ht)</span>
+<span id="cb15-19"><a href="#cb15-19"></a>td<span class="op">.</span><span class="fu">graphData</span>(fullgraph)</span>
+<span id="cb15-20"><a href="#cb15-20"></a>td<span class="op">.</span><span class="fu">onBackgroundRightClick</span>( node <span class="kw">=&gt;</span> {</span>
+<span id="cb15-21"><a href="#cb15-21"></a>  td<span class="op">.</span><span class="fu">renderer</span>()<span class="op">.</span><span class="at">domElement</span><span class="op">.</span><span class="fu">toBlob</span>(<span class="kw">function</span>(blob){</span>
+<span id="cb15-22"><a href="#cb15-22"></a>  <span class="kw">let</span> file_name <span class="op">=</span> <span class="fu">prompt</span>(<span class="st">&quot;Enter file name. This will show up in your browser&#39;s download folder with a png extension.&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a>    <span class="fu">saveAs</span>( blob<span class="op">,</span> file_name )</span>
+<span id="cb15-24"><a href="#cb15-24"></a>  })</span>
+<span id="cb15-25"><a href="#cb15-25"></a>})</span>
+<span id="cb15-26"><a href="#cb15-26"></a>td<span class="op">.</span><span class="fu">nodeThreeObject</span>(node <span class="kw">=&gt;</span> {</span>
+<span id="cb15-27"><a href="#cb15-27"></a>    <span class="kw">const</span> sprite <span class="op">=</span> <span class="kw">new</span> <span class="fu">SpriteText</span>(node<span class="op">.</span><span class="at">label</span>)</span>
+<span id="cb15-28"><a href="#cb15-28"></a>    sprite<span class="op">.</span><span class="at">material</span><span class="op">.</span><span class="at">depthWrite</span> <span class="op">=</span> <span class="kw">false</span> </span>
+<span id="cb15-29"><a href="#cb15-29"></a>    sprite<span class="op">.</span><span class="at">color</span> <span class="op">=</span> <span class="st">&#39;lightgrey&#39;</span></span>
+<span id="cb15-30"><a href="#cb15-30"></a>    sprite<span class="op">.</span><span class="at">textHeight</span> <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a>    sprite<span class="op">.</span><span class="at">padding</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb15-32"><a href="#cb15-32"></a>    <span class="cf">return</span> sprite</span>
+<span id="cb15-33"><a href="#cb15-33"></a>})</span>
+<span id="cb15-34"><a href="#cb15-34"></a>td<span class="op">.</span><span class="fu">nodeLabel</span>(<span class="st">&#39;hover&#39;</span>)</span>
+<span id="cb15-35"><a href="#cb15-35"></a>Graph<span class="op">.</span><span class="fu">d3Force</span>(<span class="st">&#39;charge&#39;</span>)<span class="op">.</span><span class="fu">strength</span>(<span class="op">-</span><span class="dv">50</span>)</span>
+<span id="cb15-36"><a href="#cb15-36"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;sean_button&#39;</span>)<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">visibility</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span></span>
+<span id="cb15-37"><a href="#cb15-37"></a>}</span></code></pre>
+      </div>
+
+

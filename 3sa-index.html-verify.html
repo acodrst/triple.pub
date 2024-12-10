@@ -1,0 +1,11 @@
+<html><head><link rel="stylesheet" type="text/css" href="style.css"><title>verify</title></head><body><p>Triple System Analysis <p>File: index.html
+<br>Date:
+2023-05-09
+<br>Timestamp:
+20230509T142148.987Z
+<p><a href="files/index.html-sig.hex.txt">this hex signature</a> can be verified with openssl:
+
+ <pre>xxd -r -p &lt;hex contents&gt; sig.bin
+openssl dgst -sha256 -verify tri_pub.pem -signature sig.bin &lt;file associated with hex contents&gt;
+</pre>
+<p>Note that Cloudflare injects a piece of javascript at the end of index.html for bot mitigation that needs to be removed if you are verifying the page directly, or use <a href="3sa.zip">this Zip version</a>.</body></html>

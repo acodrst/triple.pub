@@ -1,0 +1,11 @@
+<html><head><link rel="stylesheet" type="text/css" href="style.css"><title>verify</title></head><body><p>Triple System Analysis <p>File: 3sa.pdf
+<br>Date:
+2023-05-09
+<br>Timestamp:
+20230509T142148.987Z
+<p><a href="files/3sa.pdf-sig.hex.txt">this hex signature</a> can be verified with openssl:
+
+ <pre>xxd -r -p &lt;hex contents&gt; sig.bin
+openssl dgst -sha256 -verify tri_pub.pem -signature sig.bin &lt;file associated with hex contents&gt;
+</pre>
+</body></html>
