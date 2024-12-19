@@ -2,3 +2,5 @@ images/**
 files/**
 node_modules/**
 site.txt
+.*
+!.gitignore

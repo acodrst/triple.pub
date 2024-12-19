@@ -66,10 +66,9 @@ const cur_hash = arr_to_hex(
 
 if (last_hash.trim() != cur_hash.trim()) {
   Deno.writeTextFileSync("data_sha512.txt", cur_hash);
-  const img = fpng(text, domain, tss);
-
-  const a32h = arr_to_hex(img.slice(-20, -16));
-  console.log(`Generated FloppyPNG Size=${img.length}`);
+  const fp_obj=fpng(` Verify sig at floppypng.com - ${tss}`,text)
+  const a32h = arr_to_hex(fp_obj.im.slice(-20, -16));
+  console.log(`Generated FloppyPNG Size=${fp_obj.ln}`);
 
   const priv = Deno.readTextFileSync(Deno.env.get("CL_PRIV")).replace(
     /.*KEY-----(.+?)-----END.*/smg,
@@ -96,13 +95,13 @@ if (last_hash.trim() != cur_hash.trim()) {
       saltLength: 32,
     },
     prv,
-    img,
+    fp_obj.im,
   );
   const u8sig = new Uint8Array(sig);
   const page = Deno.readTextFileSync("assets/pageops.html");
-  Deno.writeFileSync(`${tss}-${a32h}.png`, img);
+  Deno.writeFileSync(`${tss}-${a32h}.png`, fp_obj.im);
   Deno.writeTextFileSync(`${tss}-${a32h}.txt`, base64.bytesToBase64(u8sig));
-  Deno.writeFileSync(`${backup}${tss}-${a32h}.png`, img);
+  Deno.writeFileSync(`${backup}${tss}-${a32h}.png`, fp_obj.im);
   for await (const i of Deno.readDir("./")) {
     if (
       i.name != `${tss}-${a32h}.png` &&
@@ -123,7 +122,8 @@ if (last_hash.trim() != cur_hash.trim()) {
     `${domain}.page.html`,
     page
       .replaceAll("thisisimage", `${tss}-${a32h}`)
-      .replaceAll("thisisemoji", emoji),
+      .replaceAll("thisisemoji", emoji)
+      .replaceAll("thisislength",fp_obj.ln)
   );
 }
 function web_deal(req) {
