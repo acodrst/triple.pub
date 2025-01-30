@@ -86,7 +86,9 @@ img {
   font-size: 1.7em;
 }
 #subtitle svg {
-  height: 1.7rem;
+  padding-top:2px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 /*  ==============================================================================
