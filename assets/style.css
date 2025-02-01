@@ -81,14 +81,15 @@ img {
   height:1.7rem;
   display: none;
   align-items: center;
+  column-gap:5px;
 }
 #sig {
   font-size: 1.7em;
 }
 #subtitle svg {
-  padding-top:2px;
-  height: 1.5rem;
-  width: 1.5rem;
+  padding-top:4px;
+  height: 30px;
+  width: 30px;
 }
 
 /*  ==============================================================================
@@ -671,12 +672,8 @@ a:link {
 }
 #subtitle {
   margin-top: 1em;
-  padding-left:1em;
   grid-column: 2/4;
   grid-row: 4;
-}
-#subtitle svg{
-  min-width:53.16px; 
 }
 #rest {
   grid-column: 1/4;
